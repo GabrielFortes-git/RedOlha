@@ -1,0 +1,57 @@
+
+services:
+
+  # Backend PHP
+  backend:
+    build: ./backend
+    container_name: redolha_backend
+    ports:
+      - "8080:80"                # Acesso via browser
+    volumes:
+      - ./backend:/var/www/html
+    depends_on:
+      - db
+    restart: always
+
+  # Banco de dados MySQL (porta alterada para 3307)
+  db:
+    image: mysql:8
+    container_name: redolha_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: rede
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3307:3306"               # Host:Container
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./bd/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  # Frontend (opcional)
+  frontend:
+    image: nginx:latest
+    container_name: redolha_frontend
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    depends_on:
+      - backend
+    restart: always
+
+  # Python scripts (rede / monitorização)
+  python:
+    build: ./scripts
+    container_name: redolha_python
+    volumes:
+      - ./scripts:/app
+    working_dir: /app
+    command: python3 script_rede.py
+    depends_on:
+      - backend
+    restart: always
+
+volumes:
+  db_data:

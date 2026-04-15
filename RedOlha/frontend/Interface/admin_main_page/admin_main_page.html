@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="admin_main_page.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!----------------->
+    <title>RedOlha-Admin</title>
+</head>
+<body>
+
+   <div class="main-container">
+    <!---------------  HEAD ----------------->
+        <header class="header">
+            <div class="header-area">
+                <div class="logo">
+                    <div class="logo-img">
+                        <img src="../Resources/Images/REDOLHA.png">
+                    </div>
+                    <div class="logo-text">
+                        <h1>RedOlha</h1>
+                    </div>
+                </div>
+                <div class="middle">
+                    <div class="page-tree">
+                        <div>
+                            <a href="admin_main_page.html">/Home</a>
+                        </div>
+                        <div>
+                            <a href="admin_main_page.html">/. . .</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="toolbar">
+                    <div>
+                        <i class="bx bx-search-alt"></i>
+                    </div>
+                    <div>
+                       <i class="bx bx-user"></i>
+                    </div>
+                    <div>
+                        <i class="bx bx-menu"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+    <!---------------  MAIN ----------------->
+        <main class="main">
+            <div class="menu">
+                <div>
+                    <div>  <i class="bx bx-home"></i> </div>
+                    <div> <i class="bx bx-table"></i> </div>
+                    <div> <i class="bx bx-folder"></i> </div>
+                    <div> <i class="bx bx-calculator"></i> </div>
+                </div>
+                <div>
+                    <div>  <i class="bx bx-user"></i> </div>
+                    <div>  <i class="bx bx-cog"></i> </div>
+                </div>
+            </div>
+            <div class="main-area">
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-label"></div>
+                        <div class="stat-content">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label"></div>
+                        <div class="stat-content">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label"></div>
+                        <div class="stat-content">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label"></div>
+                        <div class="stat-content">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="system-modules">
+                    <div class="module">
+                        <div class="module-content">
+                            <div>
+
+                                <!----------- Chart test ---------------->
+                                
+                                <!--------------------------------------->
+
+                            </div>
+                            <div></div>
+                        </div>
+                        <div class="module-link">
+                            <img src="../Resources/icons/caret-big-right.svg">
+                        </div>
+                    </div>
+                     <div class="module">
+                        <div class="module-content">
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="module-link">
+                            <img src="../Resources/icons/caret-big-right.svg">
+                        </div>
+                     </div>
+                      <div class="module">
+                        <div class="module-content">
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="module-link">
+                            <img src="../Resources/icons/caret-big-right.svg">
+                        </div>
+                      </div>
+                       <div class="module">
+                        <div class="module-content">
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="module-link">
+                            <img src="../Resources/icons/caret-big-right.svg">
+                        </div>
+                       </div>
+                </div>
+            </div>
+            <div class="briefing">
+               <div></div>
+               <div></div>
+            </div> 
+        </main>
+    <!---------------  FOOTER ----------------->
+        <footer class="footer">
+            <div class="footer-area">
+
+            </div>
+        </footer>
+   </div>
+
+<!-------------------------------CHART--------------------------------------->
+
+<canvas id="doughnutChart" width="400" height="400"></canvas>
+<script src="https://jsdelivr.net"></script>
+
+<script>
+//    Definir as configurações 
+  const data = {
+    labels: ['Red', 'Blue', 'Yellow'],
+    datasets: [{
+      label: 'My First Dataset',
+      data: [300, 50, 100],
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 205, 86)'
+      ],
+      hoverOffset: 4
+    }]
+  };
+
+  const config = {
+    type: 'doughnut',
+    data: data,
+  };
+
+  //  Inicializar o gráfico 
+  const ctx = document.getElementById('doughnutChart').getContext('2d');
+  new Chart(ctx, config);
+</script>
+
+<!--------------------------------------------------------------------------->
+</body>
+</html>
