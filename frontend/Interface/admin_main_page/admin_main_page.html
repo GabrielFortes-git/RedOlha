@@ -54,18 +54,6 @@
         </header>
     <!---------------  MAIN ----------------->
         <main class="main">
-            <div class="menu">
-                <div>
-                    <div>  <i class="bx bx-home"></i> </div>
-                    <div> <i class="bx bx-table"></i> </div>
-                    <div> <i class="bx bx-folder"></i> </div>
-                    <div> <i class="bx bx-calculator"></i> </div>
-                </div>
-                <div>
-                    <div>  <i class="bx bx-user"></i> </div>
-                    <div>  <i class="bx bx-cog"></i> </div>
-                </div>
-            </div>
             <div class="main-area">
                 <div class="stats">
                     <div class="stat">
@@ -107,10 +95,7 @@
                         <div class="module-content">
                             <div id="chart">
 
-                                <!----------- Chart test ---------------->
-                                
-                                <!--------------------------------------->
-
+                    
                             </div>
                             <div></div>
                         </div>
@@ -120,7 +105,9 @@
                     </div>
                      <div class="module module-maintainanceManutencion">
                         <div class="module-content">
-                            <div></div>
+                            <div>
+                                <!-- <img src="../Resources/Images/MaintainanceManutention.jpg"> -->
+                            </div>
                             <div></div>
                         </div>
                         <div class="module-link">
@@ -152,6 +139,24 @@
                <div></div>
             </div> 
         </main>
+
+     <!---------------  ASIDE ----------------->
+
+        <div class="aside">
+             <div class="menu">
+                <div>
+                    <div>  <i class="bx bx-home"></i> </div>
+                    <div> <i class="bx bx-table"></i> </div>
+                    <div> <i class="bx bx-folder"></i> </div>
+                    <div> <i class="bx bx-calculator"></i> </div>
+                </div>
+                <div>
+                    <div>  <i class="bx bx-user"></i> </div>
+                    <div>  <i class="bx bx-cog"></i> </div>
+                </div>
+            </div>
+        </div>
+
     <!---------------  FOOTER ----------------->
         <footer class="footer">
             <div class="footer-area">
@@ -163,36 +168,36 @@
 <!-------------------------------CHART--------------------------------------->
 <script>
     var options = {
-              series: [44, 55, 67, 83],
-              chart: {
-              height: 350,
-              type: 'radialBar',
-            },
-            plotOptions: {
-              radialBar: {
-                dataLabels: {
-                  name: {
-                    fontSize: '22px',
-                  },
-                  value: {
-                    fontSize: '16px',
-                  },
-                  total: {
-                    show: true,
-                    label: 'Total',
-                    formatter: function (w) {
-                      // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-                      return 249
-                    }
-                  }
-                }
-              }
-            },
-            labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],
-            };
-    
-            var chart = new ApexCharts(document.querySelector("#chart"), options);
-            chart.render();
+          series: [{
+          name: 'series1',
+          data: [31, 40, 28, 51, 42, 109, 100]
+        }, {
+          name: 'series2',
+          data: [11, 32, 45, 32, 34, 52, 41]
+        }],
+          chart: {
+          height: 250,
+          type: 'area'
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        xaxis: {
+          type: 'datetime',
+          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+        },
+        tooltip: {
+          x: {
+            format: 'dd/MM/yy HH:mm'
+          },
+        },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
 </script>
 <!--------------------------------------------------------------------------->
 </body>
