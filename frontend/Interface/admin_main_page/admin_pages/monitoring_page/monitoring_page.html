@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="admin_main_page.css">
+    <link rel="stylesheet" href="monitoring_page.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,13 +13,12 @@
     <!------ Apex Charts------->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!------------------------->
-    <title>RedOlha-Admin</title>
+    <title>Document</title>
 </head>
 <body>
-
-   <div class="main-container">
-    <!---------------  HEAD ----------------->
-        <header class="header">
+    
+    <div class="main-container">
+           <header class="header">
             <div class="header-area">
                 <div class="logo">
                     <div class="logo-img">
@@ -52,7 +51,7 @@
                 </div>
             </div>
         </header>
-    <!---------------  MAIN ----------------->
+         <!---------------  MAIN ----------------->
         <main class="main">
             <div class="main-area">
                 <div class="stats">
@@ -91,63 +90,61 @@
                     </div>
                 </div>
                 <div class="system-modules">
-                <!-- Monitoring Module-->
-                    <div class="module module-monitoring">
+                <!--  Module-->
+                    <div class="module">
+                        <div class="module-content">
+                            <div id="chart1">
+
+                    
+                            </div>
+                        </div>
+                    </div>
+                    <!--  Module -->
+                     <div class="module">
+                        <div class="module-content">
+                            <div id="chart2">
+
+                            </div>
+                        </div>
+                     </div>
+                     <!-- Module -->
+                      <div class="module">
+                        <div class="module-content">
+                            <div id="chart3">
+                               
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                      </div>
+                      <!--  Module -->
+                       <div class="module">
+                        <div class="module-content">
+                            <div id="chart4"></div>
+                            <div></div>
+                        </div>
+                       </div>
+                        <!--  Module-->
+                    <div class="module">
+                        <div class="module-content">
+                            <div>
+
+                    
+                            </div>
+                        </div>
+                    </div>
+                     <!--  Module-->
+                    <div class="module">
                         <div class="module-content">
                             <div id="chart">
 
                     
                             </div>
                         </div>
-                        <div class="module-link" id="monitoringModuleLink">
-                            <img src="../Resources/icons/caret-big-right.svg">
-                        </div>
                     </div>
-                    <!-- Maintainance Manutencion Module -->
-                     <div class="module module-maintainanceManutencion">
-                        <div class="module-content">
-                            <div>
-                                <img src="../Resources/Images/MaintainanceManutention.jpg">
-                            </div>
-                            <div>
-                                
-                            </div>
-                        </div>
-                        <div class="module-link" id="manutentionModuleLink">
-                            <img class="module-img" src="../Resources/icons/caret-big-right.svg">
-                        </div>
-                     </div>
-                     <!-- Subnet Plannig Module -->
-                      <div class="module module-sunetPlanning">
-                        <div class="module-content">
-                            <div>
-                                <!-- <img src="../Resources/Images/ipcalculator.svg" style="height: 80%;"> -->
-                                 <img src="../Resources/Images/calculator-1019743_640.webp" height="100%">
-                            </div>
-                            <div>
-
-                            </div>
-                        </div>
-                        <div class="module-link" id="subnettingModuleLink">
-                            <img src="../Resources/icons/caret-big-right.svg">
-                        </div>
-                      </div>
-                      <!-- User Management Module -->
-                       <div class="module module-userManagement">
-                        <div class="module-content">
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="module-link">
-                            <img src="../Resources/icons/caret-big-right.svg">
-                        </div>
-                       </div>
                 </div>
             </div>
-            <div class="briefing">
-               <div></div>
-               <div></div>
-            </div> 
         </main>
 
      <!---------------  ASIDE ----------------->
@@ -155,14 +152,10 @@
         <div class="aside">
              <div class="menu">
                 <div>
-                    <div>  <i class="bx bx-home"></i> </div>
-                    <div> <i class="bx bx-table"></i> </div>
-                    <div> <i class="bx bx-folder"></i> </div>
-                    <div> <i class="bx bx-calculator"></i> </div>
+
                 </div>
                 <div>
-                    <div>  <i class="bx bx-user"></i> </div>
-                    <div>  <i class="bx bx-cog"></i> </div>
+                    
                 </div>
             </div>
         </div>
@@ -176,6 +169,8 @@
    </div>
 
 <!-------------------------------CHART--------------------------------------->
+
+<!----- Chart 1 -->
 <script>
     var options = {
           series: [{
@@ -206,10 +201,157 @@
         },
         };
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
+        var chart1 = new ApexCharts(document.querySelector("#chart1"), options);
+        chart1.render();
 </script>
+
+<!---- Chart 2 -->
+<script>
+   var options = {
+          series: [{
+          name: 'Inflation',
+          data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
+        }],
+          chart: {
+          height: 280,
+          type: 'bar',
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 10,
+            dataLabels: {
+              position: 'top', // top, center, bottom
+            },
+          }
+        },
+        dataLabels: {
+          enabled: true,
+          formatter: function (val) {
+            return val + "%";
+          },
+          offsetY: -20,
+          style: {
+            fontSize: '12px',
+            colors: ["#304758"]
+          }
+        },
+        
+        xaxis: {
+          categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          position: 'top',
+          axisBorder: {
+            show: false
+          },
+          axisTicks: {
+            show: false
+          },
+          crosshairs: {
+            fill: {
+              type: 'gradient',
+              gradient: {
+                colorFrom: '#D8E3F0',
+                colorTo: '#BED1E6',
+                stops: [0, 100],
+                opacityFrom: 0.4,
+                opacityTo: 0.5,
+              }
+            }
+          },
+          tooltip: {
+            enabled: true,
+          }
+        },
+        yaxis: {
+          axisBorder: {
+            show: false
+          },
+          axisTicks: {
+            show: false,
+          },
+          labels: {
+            show: false,
+            formatter: function (val) {
+              return val + "%";
+            }
+          }
+        
+        },
+        title: {
+          text: 'Monthly Inflation in Argentina, 2002',
+          floating: true,
+          offsetY: 330,
+          align: 'center',
+          style: {
+            color: '#444'
+          }
+        }
+        };
+
+
+        var chart2 = new ApexCharts(document.querySelector("#chart2"), options);
+        chart2.render();
+</script>
+
+<!---- Chart 3 -->
+<script>
+    var options = {
+          series: [44, 55, 13, 43, 22],
+          chart: {
+          width: 380,
+          type: 'pie',
+        },
+        labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
+
+        var chart3 = new ApexCharts(document.querySelector("#chart3"), options);
+        chart3.render();
+</script>
+
+<!-- Chart 4 -->
+ <script>
+    var options = {
+          series: [14, 23, 21, 17, 15, 10, 12, 17, 21],
+          chart: {
+          type: 'polarArea',
+        },
+        stroke: {
+          colors: ['#fff']
+        },
+        fill: {
+          opacity: 0.8
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200,
+              height: 370,
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
+
+        var chart4 = new ApexCharts(document.querySelector("#chart4"), options);
+        chart4.render();
+ </script>
+
 <!--------------------------------------------------------------------------->
 <script src="admin_main_page.js"></script>
+    
+
 </body>
 </html>

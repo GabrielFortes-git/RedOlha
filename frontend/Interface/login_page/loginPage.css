@@ -65,11 +65,11 @@ body{
 }
 
 .login .info-area{
-  background-color: #b4d6f1;
+  background-color: #ececed ;
 }
 
 .register .info-area{
-  background-color: #b4d6f1;
+  background-color: #ececed;
 }
 
   
@@ -160,7 +160,8 @@ body{
    font-weight: 600;
    border: none;
    border-radius: 7px;
-   background-color: #4988C4;
+   color: white;
+   background-color: #0F2854;
    transition: all 1s;
 }
 

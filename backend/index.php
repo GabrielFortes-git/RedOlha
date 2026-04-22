@@ -42,11 +42,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     break;
                 case 'agent':
                     $agentDataManagement = manageAgentData($dataRecived->data);
+                    header('Content-Type: application/json');
                     echo json_encode($agentDataManagement);
-                    // echo json_encode([
-                    //     "status" => "ok",
-                    //     "message" => "request received",
-                    // ]);
+                    echo json_encode([
+                        "status" => "ok",
+                        "message" => "request received",
+                    ]);
                     break;
                 default:
                     echo json_encode([
