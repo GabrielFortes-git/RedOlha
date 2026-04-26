@@ -3,6 +3,7 @@
 session_start();
 include 'login_register.php';
 include 'agent_data.php';
+include 'network_data.php';
     
 // Permite que o frontend na porta 3000 aceda a este script
 header("Access-Control-Allow-Origin: http://localhost:3000");
@@ -46,7 +47,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     echo json_encode($agentDataManagement);
                     echo json_encode([
                         "status" => "ok",
-                        "message" => "request received",
+                        "message" => "Request Received!",
+                    ]);
+                    break;
+                case 'netData':
+                    $networkData = manageNetworkData($dataRecived);
+                    echo json_encode([
+                        "status" => "Ok",
+                        "message" => "Request Received!"
                     ]);
                     break;
                 default:

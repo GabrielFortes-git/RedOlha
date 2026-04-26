@@ -37,6 +37,8 @@ services:
       - "3000:80"
     volumes:
       - ./frontend:/usr/share/nginx/html
+    cap_add:
+      - NET_ADMIN
     depends_on:
       - backend
     restart: always
@@ -51,6 +53,8 @@ services:
     command: python3 script_rede.py
     depends_on:
       - backend
+    network_mode: "host"
+    privileged: true 
     restart: always
 
 volumes:
