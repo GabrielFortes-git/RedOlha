@@ -4,212 +4,336 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="admin_main_page.css">
+    <link rel="stylesheet" href="common/common-style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!------ Apex Charts------->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <!------------------------->
+    <!--------- Pusher JS ------------>
+    <script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
+    <!-------------------------------->
     <title>RedOlha-Admin</title>
 </head>
 <body>
 
-   <div class="main-container">
-    <!---------------  HEAD ----------------->
-        <header class="header">
-            <div class="header-area">
-                <div class="logo">
-                    <div class="logo-img">
-                        <img src="../Resources/Images/Red0lha.svg">
-                    </div>
-                    <div class="logo-text">
-                        <h1>RedOlha</h1>
-                    </div>
-                </div>
-                <div class="middle">
-                    <div class="page-tree">
-                        <div>
-                            <a href="admin_main_page.html">/Home</a>
-                        </div>
-                        <div>
-                            <a href="admin_main_page.html">/. . .</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="toolbar">
-                    <div>
-                        <i class="bx bx-search-alt"></i>
-                    </div>
-                    <div>
-                       <i class="bx bx-user"></i>
-                    </div>
-                    <div>
-                        <i class="bx bx-menu"></i>
-                    </div>
-                </div>
-            </div>
-        </header>
-    <!---------------  MAIN ----------------->
-        <main class="main">
-            <div class="main-area">
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-label">
-                            <span>Agents</span>
-                        </div>
-                        <div class="stat-content">
-                            <span style="color: orange">0000</span>
-                        </div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-label">
-                            <span>Active Agents</span>
-                        </div>
-                        <div class="stat-content">
-                            <span style="color: rgb(42, 148, 42)">0000</span>
-                        </div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-label">
-                            <span>Network Devices</span> <!-- latência, largura de banda-->
-                        </div>
-                        <div class="stat-content">
-                            <span style="color: rgb(81, 81, 189)">0000</span>
-                          
-                        </div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-label">
-                            <span>Alerts</span>
-                        </div>
-                        <div class="stat-content">
-                            <span style="color: rgb(202, 64, 64)">0000</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="system-modules">
-                <!-- Monitoring Module-->
-                    <div class="module module-monitoring">
-                        <div class="module-content">
-                            <div id="chart">
+<div class="main-container">
+<!------------------------------------------------ HEADER ------------------------------------------------>
+    <div class="header">
+        <div id="clock-container">
+           <div id="clock">-</div>
+       </div>
 
-                    
-                            </div>
-                        </div>
-                        <div class="module-link" id="monitoringModuleLink">
-                            <img src="../Resources/icons/caret-big-right.svg">
-                        </div>
-                    </div>
-                    <!-- Maintainance Manutencion Module -->
-                     <div class="module module-maintainanceManutencion">
-                        <div class="module-content">
-                            <div>
-                                <img src="../Resources/Images/MaintainanceManutention.jpg">
-                            </div>
-                            <div>
-                                
-                            </div>
-                        </div>
-                        <div class="module-link" id="manutentionModuleLink">
-                            <img class="module-img" src="../Resources/icons/caret-big-right.svg">
-                        </div>
-                     </div>
-                     <!-- Subnet Plannig Module -->
-                      <div class="module module-sunetPlanning">
-                        <div class="module-content">
-                            <div>
-                                <!-- <img src="../Resources/Images/ipcalculator.svg" style="height: 80%;"> -->
-                                 <img src="../Resources/Images/calculator-1019743_640.webp" height="100%">
-                            </div>
-                            <div>
-
-                            </div>
-                        </div>
-                        <div class="module-link" id="subnettingModuleLink">
-                            <img src="../Resources/icons/caret-big-right.svg">
-                        </div>
-                      </div>
-                      <!-- User Management Module -->
-                       <div class="module module-userManagement">
-                        <div class="module-content">
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <div class="module-link">
-                            <img src="../Resources/icons/caret-big-right.svg">
-                        </div>
-                       </div>
-                </div>
-            </div>
-            <div class="briefing">
-               <div></div>
-               <div></div>
-            </div> 
-        </main>
-
-     <!---------------  ASIDE ----------------->
-
-        <div class="aside">
-             <div class="menu">
+        <div class="path-area">
+            <div class="path">
                 <div>
-                    <div>  <i class="bx bx-home"></i> </div>
-                    <div> <i class="bx bx-table"></i> </div>
-                    <div> <i class="bx bx-folder"></i> </div>
-                    <div> <i class="bx bx-calculator"></i> </div>
+                    <a href="admin_main_page.html">/Home</a>
                 </div>
                 <div>
-                    <div>  <i class="bx bx-user"></i> </div>
-                    <div>  <i class="bx bx-cog"></i> </div>
+                    <a href="admin_main_page.html">/. . .</a>
                 </div>
             </div>
         </div>
-
-    <!---------------  FOOTER ----------------->
-        <footer class="footer">
-            <div class="footer-area">
-
+        <div class="options">
+            <div class="profile">
+                <div>
+                    <img src="../Resources/icons/user.svg">
+                </div>
             </div>
-        </footer>
-   </div>
+        </div>
+    </div>
+<!------------------------------------------------ ASIDE ------------------------------------------------>
+    <div class="aside">
+        <div class="logo">
+          <div>
+            <img src="../Resources/Images/Red0lha.svg">
+            <span>RedOlha</span>
+          </div>
+        </div>
+        <div class="menu-options1">
+            <div>
+                <ul>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/home-alt-2.svg">
+                            <span>Home</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/eye-alt.svg">
+                            <span>Monitoring</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/calendar-detail.svg">
+                            <span>Manutention</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/calculator.svg">
+                            <span>Subneting</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/alert-triangle.svg">
+                            <span>Alerts</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/spanner.svg">
+                            <span>Administration</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu-options2">
+            <div>
+                <ul>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/user.svg">
+                            <span>User</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/cog.svg">
+                            <span>Settings</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../Resources/icons/arrow-out-right-square-half.svg">
+                            <span>Log-out</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<!------------------------------------------------ MAIN ------------------------------------------------>
+    <div class="main">
+        <div class="main-area">
+            <div class="area1">
+               <div class="area1-left">
+                <!---------- Module Monitoring ----------->
+                    <div class="module monitoring">
+                        <div class="module-top-area">
+                            <div class="module-icon">
+                                <div class="module-icon-monitoring"><img src="../Resources/icons/chart-sine.svg"></div>
+                            </div>
+                            <div class="module-description">
+                                <div>
+                                    <div class="module-description-tittle-monitoring"><span>Monitorização</span></div>
+                                    <div>
+                                        <p>Visualize dispositivos, métricas da rede e dos agentes, e acompanhe o desempenho em tempo real</p>
+                                    </div>
+                                </div>
+                                <div class="background-icon-monitoring"><img src="../Resources/Images/global-network.png"></imgm></div>
+                            </div>
+                        </div>
+                        <div class="module-bottom-area module-bottom-area-monitorization">
+                            <div>
+                                <div>
+                                    <div class="module-stat">
+                                        <div><img src="../Resources/icons/laptop.svg"></div>
+                                        <div>
+                                            <div><span>-</span></div>
+                                            <div><span>Agentes</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="module-stat">
+                                        <div><img src="../Resources/icons/doughnut-chart.svg"></div>
+                                        <div>
+                                            <div><span id="data-download">-<span></div>
+                                            <div>Download</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div >
+                                    <div id="monitoringModuleLink"><img src="../Resources/icons/arrow-right-stroke.svg"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------- Module Alerts ----------->
+                    <div class="module alerts">
+                        <div class="module-top-area">
+                            <div class="module-icon">
+                                <div class="module-icon-alert"><img src="../Resources/icons/bell.svg"></div>
+                            </div>
+                            <div class="module-description">
+                                <div>
+                                    <div class="module-description-tittle-alert"><span>Alertas</span></div>
+                                    <div>
+                                        <p>Tenha acesso aos eventos críticos, alertas e notificações em tempo real</p>
+                                    </div>
+                                </div>
+                                <div class="background-icon-alert"><img src="../Resources/Images/alert.png"></div>
+                            </div>
+                        </div>
+                        <div class="module-bottom-area module-bottom-area-alerts">
+                            <div>
+                                <div>
+                                    <div class="module-stat">
+                                        <div><img src="../Resources/icons/alert-triangle-red.svg"></div>
+                                        <div>
+                                            <div><span>-</span></div>
+                                            <div><span>Alertas</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="module-stat">
+                                        <div><img src="../Resources/icons/bell-ring.svg"></div>
+                                        <div>
+                                            <div><span>-</span></div>
+                                            <div>Alertas Críticos</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div id="alertModuleLink"><img src="../Resources/icons/arrow-right-stroke.svg"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                      <!---------- Module Manutention ----------->
+                    <div class="module manutention">
+                        <div class="module-top-area">
+                            <div class="module-icon">
+                                <div class="module-icon-manutention"><img src="../Resources/icons/spanner-white.svg"></div>
+                            </div>
+                            <div class="module-description">
+                                <div>
+                                    <div class="module-description-tittle-manutention"><span>Registro de Manutenção</span></div>
+                                    <div>
+                                        <p>Crie registros de manutenção para manter o histórico, exporte-os para ao criar relatórios!</p>
+                                    </div>
+                                </div>
+                                <div class="background-icon-manutention"><img src="../Resources/Images/customer-support.png"></div>
+                            </div>
+                        </div>
+                        <div class="module-bottom-area module-bottom-area-manutention">
+                            <div>
+                                <div>
+                                    <div class="module-stat">
+                                        <div><img src="../Resources/icons/calendar-check.svg"></div>
+                                        <div>
+                                            <div><span>-</span></div>
+                                            <div><span>Registros</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="module-stat">
+                                        <div><img src="../Resources/icons/clock.svg"></div>
+                                        <div>
+                                            <div><span>-</span></div>
+                                            <div>Último Registro</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div id="manutentionModuleLink"><img src="../Resources/icons/arrow-right-stroke.svg"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                      <!---------- Module net-planning ----------->
+                    <div class="module netPlanning">
+                        <div class="module-top-area">
+                           <div class="module-icon">
+                            <div class="module-icon-netPlanning"><img src="../Resources/icons/calculator-white.svg"></div>
+                           </div>
+                           <div class="module-description">
+                            <div>
+                                <div class="module-description-tittle-netPlanning"><span>Planeamento de Rede</span></div>
+                                <div>
+                                    <p>Crie diagramas de rede profissionais e calcule sub-redes IPv4 instantaneamente.</p>
+                                </div>
+                            </div>
+                            <div class="background-icon-netPlanning"><img src="../Resources/Images/tree.png"></div>
+                           </div>     
+                        </div>
+                        <div class="module-bottom-area module-bottom-area-netPlanning">
+                            <div>
+                                <div>
+                                    <div class="module-stat">
+                                        <div><img src="../Resources/icons/laptop.svg"></div>
+                                        <div>
+                                            <div><span>-</span></div>
+                                            <div><span>Dispositivos</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="module-stat">
+                                        <div><img src="../Resources/icons/doughnut-chart.svg"></div>
+                                        <div>
+                                            <div><span>-</span></div>
+                                            <div>Download</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div id="netPlanningModuleLink"><img src="../Resources/icons/arrow-right-stroke.svg"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+               <div class="area1-right">
+                    <div class="card card-network-briefing">
+                        <div class="label"><span><img src="../Resources/icons/network-chart.svg">  Resumo da Rede</span></div>
+                        <div class="content">
+                            <div>
+                                <div><img src="../Resources/icons/laptop.svg"></div>
+                                <div><span>-</span></div>
+                                <div>Dispositivos</div>
+                            </div>
+                            <div>
+                                <div><img src="../Resources/icons/folder-up-arrow.svg"></div>
+                                <div><span id="data-upload">-</span></div>
+                                <div>Upload</div>
+                            </div>
+                            <div>
+                                <div><img src="../Resources/icons/connector.svg"></div>
+                                <div><span id="data-ping">-</span></div>
+                                <div>Ping</div>
+                            </div>
+                            <div>
+                                <div><img src="../Resources/icons/ethernet.svg"></div>
+                                <div><span>-</span></div>
+                                <div>Drops</div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="card card-alerts">
+                        <div><span><img src="../Resources/icons/workflow-alt.svg">  Atividades Recentes</span></div>
+                        <div class="recent-alerts-content">
+                            <div></div>
+                        </div>
+                     </div>
+               </div>
+            </div>
+            <div class="area2">
+                <div class="card">
+                </div>
+            </div>
+        </div>
+    </div>
+<!------------------------------------------------ FOOTER ------------------------------------------------>
+    <div class="footer">
+        
+    </div>
+</div>
 
-<!-------------------------------CHART--------------------------------------->
-<script>
-    var options = {
-          series: [{
-          name: 'series1',
-          data: [31, 40, 28, 51, 42, 109, 100]
-        }, {
-          name: 'series2',
-          data: [11, 32, 45, 32, 34, 52, 41]
-        }],
-          chart: {
-          height: 250,
-          type: 'area'
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          curve: 'smooth'
-        },
-        xaxis: {
-          type: 'datetime',
-          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-        },
-        tooltip: {
-          x: {
-            format: 'dd/MM/yy HH:mm'
-          },
-        },
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
-</script>
-<!--------------------------------------------------------------------------->
-<script src="admin_main_page.js"></script>
+    <script src="./admin_main_page.js"></script>
+    <script src="./common/common-script.js"></script>
 </body>
 </html>

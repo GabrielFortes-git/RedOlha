@@ -2,6 +2,8 @@
 
 require "configDB.php";
 
+// $connection = $GLOBALS['conn'];
+
 
 function manageAgentData($data){
     $connection = $GLOBALS['conn'];
@@ -14,18 +16,6 @@ function manageAgentData($data){
         $agentData = $getAgentData->fetch_assoc();
         storeDataInTable_systemLevelMetrics($agentData["id"], $data);
     }
-    
-
-    //  if($getAgentRow->num_rows == 0){
-    //     storeDataInTable_Agent($data);
-    //     $getAgentData = $connection->query("SELECT id FROM agents WHERE mac = '$data->macAddress'");
-    //     $agentData = $getAgentData->fetch_assoc();
-    //     storeDataInTable_systemLevelMetrics($agentData["id"],$data);
-    //  }else{
-    //     $agentId = $checkAgent["id"];
-    //     storeDataInTable_systemLevelMetrics($agentId, $data);
-    //  }
-
 }
 
 
@@ -43,17 +33,40 @@ function storeDataInTable_systemLevelMetrics($agentId, $data){
     $insertMetrics = $connection->query("INSERT INTO systemLevelMetrics(agent_id,ip_address,cpu_usage,physical_core_count,logical_core_count, username, battery_percent, boot_time)VALUES($agentId,'$data->ipAddress',$data->cpuUsage,$data->physicalCoreCount, $data->logicalCoreCount, '$data->user', $data->batteryPercentage, $data->bootTime)");
     $systemMetrics_id = $connection->insert_id; 
     if (!$insertMetrics) {
-        die("Erro INSERT metrics: " . $connection->error);
+        die("Erro INSERT metrics: " .$connection->error);
     }
-    storeDataInTable_cpu_avg_system_load($systemMetrics_id, $data->averageSystemLoad);
-    storeDataInTable_cpu_frequency($systemMetrics_id, $data->cpuFrequency);
-    storeDataInTable_cpu_stats($systemMetrics_id, $data->cpuStats);
-    storeDataInTable_cpu_times($systemMetrics_id, $data->cpuTimes);
-    storeDataInTable_virtual_memory($systemMetrics_id, $data->virtualMemory);
-    storeDataInTable_swap_memory_stats($systemMetrics_id, $data->swapMemoryStats);
-    storeDataInTable_disk_usage($systemMetrics_id, $data->diskUsage);
-    storeDataInTable_net_io_counters($systemMetrics_id, $data->netIOCounters);
+    
+    $alertType1 = "Uso de CPU";
+     if($data->cpuUsage >= 70 && $data->cpuUsage < 80){
+        $alertDescription = "Uso de processador elevado. O computador pode começar a aquecer ou a fazer mais ruído na ventoinha.";
+        create_alert($agentId, 6, $alertType1, $alertDescription);
+    }elseif($data->cpuUsage >= 80 && $data->cpuUsage <90){
+        $alertDescription = "O processador está quase no limite ({$data->cpuUsage} %). Evite iniciar novas tarefas pesadas até que a carga diminua.";
+        create_alert($agentId, 8, $alertType1, $alertDescription);        
+    }elseif($data->cpuUsage > 90){
+        $alertDescription = "Processador esgotado ({$data->cpuUsage} %). O sistema está prestes a congelar. Aguarde que os processos terminem ou feche a aplicação travada.";
+        create_alert($agentId, 10, $alertType1, $alertDescription);
     }
+
+     $alertType2 = "Bateria";
+     if($data->batteryPercentage <= 20 && $data->batteryPercentage > 10){
+        $alertDescription = "Bateria fraca: {$data->batteryPercentage} %";
+        create_alert($agentId,6, $alertType2, $alertDescription);
+    }elseif($data->batteryPercentage  <= 10){
+        $alertDescription = "Bateria prestes a esgotar: {$data->batteryPercentage} %";
+        create_alert($agentId,8, $alertType2, $alertDescription);        
+        }
+        
+            storeDataInTable_cpu_avg_system_load($systemMetrics_id, $data->averageSystemLoad);
+            storeDataInTable_cpu_frequency($systemMetrics_id, $data->cpuFrequency);
+            storeDataInTable_cpu_stats($systemMetrics_id, $data->cpuStats);
+            storeDataInTable_cpu_times($systemMetrics_id, $data->cpuTimes);
+            storeDataInTable_virtual_memory($agentId, $systemMetrics_id, $data->virtualMemory);
+            storeDataInTable_swap_memory_stats($agentId, $systemMetrics_id, $data->swapMemoryStats);
+            storeDataInTable_disk_usage($agentId,$systemMetrics_id, $data->diskUsage);
+            storeDataInTable_net_io_counters($systemMetrics_id, $data->netIOCounters);
+
+}
     
 
 function storeDataInTable_cpu_avg_system_load($foreignKey, $data){
@@ -76,22 +89,70 @@ function storeDataInTable_cpu_times($foreignKey, $data){
     $insertCpuTimes = $connection->query("INSERT INTO cpu_times(systemLevelMetrics_id,user,nice,system_time,idle,iowait,irq)VALUES($foreignKey,$data->user,$data->nice,$data->system,$data->idle,$data->iowait,$data->irq)");    
 }
 
-function storeDataInTable_disk_usage($foreignKey, $data){
+function storeDataInTable_disk_usage($agentId,$foreignKey, $data){
     $connection = $GLOBALS['conn'];
     $insertDiskUsage = $connection->query("INSERT INTO disk_usage(systemLevelMetrics_id,total,used,free,percent)VALUES($foreignKey,$data->total, $data->used, $data->free, $data->percent)");
-}
+    $diskUsagePercentage = ($data->used / $data->total)*100;  
+    $alertType = "Uso de Disco";
+    if($diskUsagePercentage >= 70 && $diskUsagePercentage < 80){
+        $alertDescription = "Espaço em disco a esgotar. Recomendamos uma limpeza preventiva de ficheiros temporários.";
+        create_alert($agentId,6, $alertType, $alertDescription);
+    }elseif($diskUsagePercentage >= 80 && $diskUsagePercentage <90){
+        $alertDescription = "O disco está quase cheio ({$diskUsagePercentage} %). Apague ficheiros desnecessários ou mova-os para a nuvem agora";
+        create_alert($agentId,8, $alertType, $alertDescription);        
+    }elseif($diskUsagePercentage > 90){
+        $alertDescription = "Espaço em disco esgotado ({$diskUsagePercentage} %). O computador pode ficar lento ou bloquear. Liberte espaço imediatamente!";
+        create_alert($agentId,10, $alertType, $alertDescription);
+    }
 
-function storeDataInTable_virtual_memory($foreignKey, $data){
+    }
+
+function storeDataInTable_virtual_memory($agentId, $foreignKey, $data){
     $connection = $GLOBALS['conn'];
     $insertVirtualMemory = $connection->query("INSERT INTO virtual_memory(systemLevelMetrics_id,total,available,percent,used,free,active,inactive,buffers,cached,shared,slab)VALUES($foreignKey,$data->total , $data->available , $data->percent , $data->used , $data->free , $data->active , $data->inactive , $data->buffers , $data->cached , $data->shared , $data->slab)");
+    $alertType = "Uso de Memoria Virtual (RAM)";
+    if($data->percent >= 70 && $data->percent < 80){
+        $alertDescription = "Uso de memória elevado. O computador pode começar a perder alguma fluidez.";
+        create_alert($agentId,6, $alertType, $alertDescription);
+    }elseif($data->percent >= 80 && $data->percent <90){
+        $alertDescription = "A memória RAM está quase cheia ({$data->percent} %). Feche as abas do navegador ou programas que não está a usar.";
+        create_alert($agentId,8, $alertType, $alertDescription);        
+    }elseif($data->percent > 90){
+        $alertDescription = "Memória RAM esgotada ({$data->percent} %). O sistema está instável. Guarde o seu trabalho e reinicie os programas pesados imediatamente!";
+        create_alert($agentId,10, $alertType, $alertDescription);
+    }
 }
 
-function storeDataInTable_swap_memory_stats($foreignKey, $data){
+function storeDataInTable_swap_memory_stats($agentId, $foreignKey, $data){
     $connection = $GLOBALS['conn'];
     $insertSwapMemoryStats = $connection->query("INSERT INTO swap_memory_stats(systemLevelMetrics_id,total,used,percent)VALUES($foreignKey,$data->total, $data->used, $data->percent)");
+    $alertType = "Uso de Memoria Secundária (SWAP)";
+    if($data->percent >= 70 && $data->percent < 80){
+        $alertDescription = "A memória secundária (SWAP) está sob carga elevada. O sistema poderá apresentar lentidão ao alternar entre janelas.";
+        create_alert($agentId, 6, $alertType, $alertDescription);
+    }elseif($data->percent >= 80 && $data->percent <90){
+        $alertDescription = "A memória de reserva (SWAP) está quase cheia ({$data->percent} %). Feche programas pesados para evitar que o sistema bloqueie.";
+        create_alert($agentId, 8, $alertType, $alertDescription);        
+    }elseif($data->percent > 90){
+        $alertDescription = "Memória SWAP esgotada ({$data->percent} %). O sistema ficou sem memória e os programas vão começar a fechar sozinhos. Guarde tudo imediatamente!";
+        create_alert($agentId, 10, $alertType, $alertDescription);
+    }
 }
 
 function storeDataInTable_net_io_counters($foreignKey, $data){
     $connection = $GLOBALS['conn'];
     $insertNetIOCounters = $connection->query("INSERT INTO net_io_counters(systemLevelMetrics_id,bytes_sent,bytes_recv,packets_sent,packets_recv,errin,errout,dropin,dropout)VALUES($foreignKey,$data->bytes_sent, $data->bytes_recv, $data->packets_sent, $data->packets_recv, $data->errin, $data->errout, $data->dropin, $data->dropout)");
+}
+
+
+function create_event($type, $description){
+    $connection = $GLOBALS['conn'];
+    $insertEvent = $connection->query("INSERT INTO events(type,description)VALUES('$type','$description')");
+    
+}
+
+function create_alert($agentId, $level, $type, $description){
+    $connection = $GLOBALS['conn'];
+    $status = True;
+    $insertAlert = $connection->query("INSERT INTO alerts(agent_id,level,type,descripton,status)VALUES($agentId,'$level','$type','$description', $status)");
 }

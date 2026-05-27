@@ -1,0 +1,42 @@
+
+
+/*
+
+
+dispositivo
+tipo de manutenção/intervenção
+responsavel
+sintoma/movito
+causa do problema
+descrição do problema
+data/hora
+estado final
+proxima revisão
+
+CREAGE TABLE registered_maintenance (
+id INT PRIMARY KEY AUTO_ICREMENT,
+device INT NOT NULL,
+type VARCHAR(100),
+responsable INT NOT NULL,
+description TEXT,
+timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+status VARCHAR(100),
+next_manutention DATETIME,
+FOREIGN KEY (responsable)REFERENCES system_users(id),
+FOREIGN KEY (device)REFERENCES registered_devices(id)
+);
+
+
+---- Dispositivo ----
+
+modelo
+tipo
+fabricante
+numero de série
+mac
+status operacional ( ativo, inativo, em manutenção);
+
+CREATE TABLE registered_devices ( id INT PRIMARY KEY AUTO_INCREMENT, model VARCHAR(100),
+ type VARCHAR(100), manufacturer VARCHAR(100), serie_number VARCHAR(60), mac_address VARCHAR(20), status ENUM("active","inactive","manutention") );
+
+*/

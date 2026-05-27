@@ -2,20 +2,40 @@
 
 require "configDB.php";
 
-function getSystemLevelMetrics(){
-    $lastId = $connection->insert_id;
-    $getSystemMetrics = $connection->query("SELECT * FROM systemLevelMetrics WHERE id = '$username'");
-    $systemMetrics = $checkUser->fetch_assoc();
-    return $systemMetrics ;
+
+function getAdminMainPageData(){
+    $connection = $GLOBALS['conn'];
+    $getNumberOfAgents = $connection->query("SELECT COUNT(*) FROM agents");
+    $numberOfAgents = $getNumberOfAgents->fetch_row();
+    $getNumberOfDevices = $connection->query("SELECT COUNT(*) FROM devices");
+    $numberOfDevices = $getNumberOfDevices->fetch_row();
+    $getNumberOfAlerts = $connection->query("SELECT COUNT(*) FROM alerts");
+    $numberOfAlerts = $getNumberOfAlerts->fetch_row();
+    $getNumberOfCriticAlerts = $connection->query("SELECT COUNT(*) FROM alerts WHERE level > 8");
+    $numberOfCriticAlerts = $getNumberOfCriticAlerts->fetch_row();
+    // $numberOfMaintanaceLog = $connection->query("SELECT COUNT(*) FROM maintenanceLog")
+
+    $data = json_encode([
+        "numberOfAgents" => $numberOfAgents[0],
+        "numberOfDevices" => $numberOfDevices[0],
+        "numberOfAlerts" => $numberOfAlerts[0],
+        "numberOfCriticAlerts" => $numberOfCriticAlerts[0]
+    ]);
+
+    return $data;
+
+    /**
+     * Numero de agentes;
+     * Numero de dispositivos;
+     * Numeros de alertas;
+     * Numeros de alertas criticos;
+     * Numero de registros de manutenção;
+     * Último Registros;
+     */
+
 }
 
 
 
-/*
-
-- Interface principal do administrados e users ( Interface que mostre os módulos do sistema);
-- Requisição  das metricas coletados de frontend(js) para backend (php). Consulta destes dados na BD, envio dos dados.
-Disponibilização destes dados na tela.
 
 
-*/

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="net_planning_page.css">
+    <link rel="stylesheet" href="../../common/common-style.css">
+    <link rel="stylesheet" href="subnetting_page.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!------ Apex Charts------->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!--------- Pusher JS ------------>
+    <script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
+    <!-------------------------------->
+    <title>RedOlha-Admin</title>
+</head>
+<body>
+
+<div class="main-container">
+<!------------------------------------------------ HEADER ------------------------------------------------>
+    <div class="header">
+        <div id="clock-container">
+           <div id="clock">00:00:00</div>
+       </div>
+       <script src="script.js"></script>
+
+        <div class="path-area">
+            <div class="path">
+                <div>
+                    <a href="admin_main_page.html">/Home</a>
+                </div>
+                <div>
+                    <a href="admin_main_page.html">/. . .</a>
+                </div>
+            </div>
+        </div>
+        <div class="options">
+            <div class="profile">
+                <div>
+                    <img src="../../../Resources/icons/user.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+<!------------------------------------------------ ASIDE ------------------------------------------------>
+    <div class="aside">
+        <div class="logo">
+          <div>
+            <img src="../../../Resources/Images/Red0lha.svg">
+            <span>RedOlha</span>
+          </div>
+        </div>
+        <div class="menu-options1">
+            <div>
+                <ul>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/home-alt-2.svg">
+                            <span>Home</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/eye-alt.svg">
+                            <span>Monitoring</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/calendar-detail.svg">
+                            <span>Manutention</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/calculator.svg">
+                            <span>Subneting</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/alert-triangle.svg">
+                            <span>Alerts</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/spanner.svg">
+                            <span>Administration</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu-options2">
+            <div>
+                <ul>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/user.svg">
+                            <span>User</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/cog.svg">
+                            <span>Settings</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/arrow-out-right-square-half.svg">
+                            <span>Log-out</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<!------------------------------------------------ MAIN ------------------------------------------------>
+    <div class="main">
+        <div class="main-area">
+            <div class="top-area">
+                <div class="subnet-module white-card">
+                    <div class="content">
+                        <div class="top"></div>
+                        <div class="bottom">
+                            <button id="subnet-module-btn">Acessar</button>
+                        </div>
+                    </div>
+                    <div class="banner"></div>
+                </div>
+                <div class="net-topology-module white-card">
+                    <div class="content">
+                        <div class="top"></div>
+                        <div class="bottom">
+                            <button id="net-topology-module-btn">Acessar</button>
+                        </div>
+                    </div>
+                    <div class="banner"></div>
+                </div>
+            </div>
+            <div class="bottom-area"></div>
+        </div>
+    </div>
+<!------------------------------------------------ FOOTER ------------------------------------------------>
+    <div class="footer">
+
+    </div>
+</div>
+
+    <script src="./net_planning_page.js"></script>
+    <script src="../../common/common-script.js"></script>
+</body>
+</html>

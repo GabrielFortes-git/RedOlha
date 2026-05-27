@@ -1,0 +1,177 @@
+
+.main-area{
+    padding: 0px 200px;
+}
+
+.tittle{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0px 30px 0px;
+}
+
+    .tittle > div:nth-child(1){
+        width: 100%;
+        height: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: end;
+        padding-bottom: 9px;
+        color: rgb(12, 12, 86);
+        font-size: 2.2em;
+        font-weight: 600;
+    }
+
+    .tittle > div:nth-child(2){
+        width: 100%;
+        height: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: gray;
+        font-size: 1.2em;
+    }
+
+.parameters{
+    width: 100%;
+    height: 30%;
+    min-height: 30%;
+    max-height: 30%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+    .parameters .content{
+        width: 100%;
+        height: 70%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+        .parameters .content .parameter{
+            height: auto;
+            width: auto;
+            display: flex;
+            flex-direction: column; 
+            gap: 10px;
+        }
+
+            .parameters .content .parameter > div:nth-child(1){
+                width: 100%;
+                height: 50%;                                        
+            }
+
+            .parameters .content .parameter > div:nth-child(2){
+                width: 100%;
+                height: 50%; 
+            }
+
+                .parameter > div:nth-child(2) input{
+                    padding: 10px 15px;
+                    border-radius: 5px;
+                    border: solid 1px rgb(191, 191, 191);
+                    font-size: 1em;
+                }
+
+                .parameter > div:nth-child(2) input::placeholder{
+                    font-size: 1.2em;
+                }
+
+    .parameters > div:nth-child(2){
+        width: 100%;
+        height: 30%;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 20px;
+        padding-right:20px;
+        margin-top: 20px;
+    }
+
+        .parameters button{
+            padding: 9px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .parameters button:nth-child(1){
+            background-color: rgb(147, 147, 147);
+        }
+        
+        .parameters button:nth-child(2){
+            background-color: rgb(8, 8, 93);
+
+        }
+
+.result{
+    width: 100%;
+    height: auto;   
+    display: flex;
+    flex-direction: column;
+}
+
+    .label{
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 20px;
+        color: rgb(5, 30, 73);
+        font-weight: 600;
+        border-bottom: solid 1px rgb(219, 219, 219);
+    }
+
+        .label .label-buttons{
+            height: auto;
+            width: auto;
+            display: flex;
+            gap: 10px;
+        }
+
+            .result button{
+                padding: 5px 10px;
+                border: none;
+                background-color: rgb(175, 175, 175);
+                font-size: 1.1em;
+                border-radius: 5px;  
+                color: white;
+            }
+
+    .calculation-result{
+        width: 100%;
+        min-height: 70px;
+        height: auto;
+        padding: 7px ;
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .calculation-result > table{
+            width: 100%;
+            border-radius: 5px;
+            height: auto;
+        }
+
+         .calculation-result > table  th{
+            color: rgb(153, 153, 153);
+        }
+
+
+         .calculation-result > table td{
+            padding: 8px 0px;
+            text-align: center;
+            color: rgb(8, 8, 57);
+            font-size: 1.2em;
+         }
+
+

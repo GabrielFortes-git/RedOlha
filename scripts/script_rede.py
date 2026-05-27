@@ -15,6 +15,7 @@ try:
     speedTestData = {"download": st.download() / 10**6, "upload": st.upload() / 10**6, "ping": st.results.ping}
     # Download and Upload - Mbps  , ping - ms
 except:
+    speedTestData = None
     print("ERROR: Failed to execute the speed test!")
 
 
@@ -36,6 +37,7 @@ try:
         "dropout": net.dropout
     }
 except:
+    netIOCounters = None
     print("ERROR: Failed to get net IO counters!")
 
 
@@ -66,6 +68,7 @@ try:
 
 
 except:
+    devices = None
     print("ERROR: Failed to find devices!")
 
 
@@ -73,7 +76,8 @@ except:
 
 try:
 
-    ROUTER = '192.168.1.254'
+
+    ROUTER = '192.168.1.254'    # Next step: Find default gateway;
 
     # Create an SNMP session to be used for all our requests
     session = Session(hostname= ROUTER, community='public', version=2)
@@ -123,7 +127,8 @@ try:
     #oid = "1.3.6.1.2.1.2.2.1.2." + i 
 
     for i in interfaceIDs:
-        interface = [i]
+        interface = []
+        interface.append(i)
         for j in interfaceCorrespondentNumber:
             data = session.get(f"1.3.6.1.2.1.2.2.1."+j+"."+i)
             interface.append(data.value)
@@ -133,6 +138,7 @@ try:
     routerData = [datas,interfaces]        
     
 except:
+    routerData = None
     print("ERROR: Failed to retrive data from router!")
 
 

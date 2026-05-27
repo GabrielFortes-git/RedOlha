@@ -4,173 +4,405 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="monitoring_page.css">
+    <link rel="stylesheet" href="../../common/common-style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!------ Apex Charts------->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <!------------------------->
-    <title>Document</title>
+    <!--------- Pusher JS ------------>
+    <script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
+    <!-------------------------------->
+    <title>RedOlha-Admin</title>
 </head>
 <body>
-    
-    <div class="main-container">
-           <header class="header">
-            <div class="header-area">
-                <div class="logo">
-                    <div class="logo-img">
-                        <img src="../Resources/Images/Red0lha.svg">
-                    </div>
-                    <div class="logo-text">
-                        <h1>RedOlha</h1>
-                    </div>
-                </div>
-                <div class="middle">
-                    <div class="page-tree">
-                        <div>
-                            <a href="admin_main_page.html">/Home</a>
-                        </div>
-                        <div>
-                            <a href="admin_main_page.html">/. . .</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="toolbar">
-                    <div>
-                        <i class="bx bx-search-alt"></i>
-                    </div>
-                    <div>
-                       <i class="bx bx-user"></i>
-                    </div>
-                    <div>
-                        <i class="bx bx-menu"></i>
-                    </div>
-                </div>
-            </div>
-        </header>
-         <!---------------  MAIN ----------------->
-        <main class="main">
-            <div class="main-area">
-                <div class="stats">
-                    <div class="stat">
-                        <div class="stat-label">
-                            <span>Agents</span>
-                        </div>
-                        <div class="stat-content">
-                            <span style="color: orange">0000</span>
-                        </div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-label">
-                            <span>Active Agents</span>
-                        </div>
-                        <div class="stat-content">
-                            <span style="color: rgb(42, 148, 42)">0000</span>
-                        </div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-label">
-                            <span>Network Devices</span> <!-- latência, largura de banda-->
-                        </div>
-                        <div class="stat-content">
-                            <span style="color: rgb(81, 81, 189)">0000</span>
-                          
-                        </div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-label">
-                            <span>Alerts</span>
-                        </div>
-                        <div class="stat-content">
-                            <span style="color: rgb(202, 64, 64)">0000</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="system-modules">
-                <!--  Module-->
-                    <div class="module">
-                        <div class="module-content">
-                            <div id="chart1">
 
-                    
-                            </div>
-                        </div>
-                    </div>
-                    <!--  Module -->
-                     <div class="module">
-                        <div class="module-content">
-                            <div id="chart2">
+<div class="main-container">
+<!------------------------------------------------ HEADER ------------------------------------------------>
+    <div class="header">
+        <div id="clock-container">
+           <div id="clock">00:00:00</div>
+       </div>
+       <script src="script.js"></script>
 
-                            </div>
-                        </div>
-                     </div>
-                     <!-- Module -->
-                      <div class="module">
-                        <div class="module-content">
-                            <div id="chart3">
-                               
-                            </div>
-                            <div>
-
-                            </div>
-                        </div>
-                      </div>
-                      <!--  Module -->
-                       <div class="module">
-                        <div class="module-content">
-                            <div id="chart4"></div>
-                            <div></div>
-                        </div>
-                       </div>
-                        <!--  Module-->
-                    <div class="module">
-                        <div class="module-content">
-                            <div>
-
-                    
-                            </div>
-                        </div>
-                    </div>
-                     <!--  Module-->
-                    <div class="module">
-                        <div class="module-content">
-                            <div id="chart">
-
-                    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-     <!---------------  ASIDE ----------------->
-
-        <div class="aside">
-             <div class="menu">
+        <div class="path-area">
+            <div class="path">
                 <div>
-
+                    <a href="admin_main_page.html">/Home</a>
                 </div>
                 <div>
-                    
+                    <a href="admin_main_page.html">/Monitoring</a>
                 </div>
             </div>
         </div>
-
-    <!---------------  FOOTER ----------------->
-        <footer class="footer">
-            <div class="footer-area">
-
+        <div class="options">
+            <div class="profile">
+                <div>
+                    <img src="../../../Resources/icons/user.svg">
+                </div>
             </div>
-        </footer>
-   </div>
+        </div>
+    </div>
+<!------------------------------------------------ ASIDE ------------------------------------------------>
+    <div class="aside">
+        <div class="logo">
+          <div>
+            <img src="../../../Resources/Images/Red0lha.svg">
+            <span>RedOlha</span>
+          </div>
+        </div>
+        <div class="menu-options1">
+            <div>
+                <ul>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/home-alt-2.svg">
+                            <span>Home</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/eye-alt.svg">
+                            <span>Monitoring</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/calendar-detail.svg">
+                            <span>Manutention</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/calculator.svg">
+                            <span>Subneting</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/alert-triangle.svg">
+                            <span>Alerts</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/spanner.svg">
+                            <span>Administration</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="menu-options2">
+            <div>
+                <ul>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/user.svg">
+                            <span>User</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/cog.svg">
+                            <span>Settings</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-option">
+                            <img src="../../../Resources/icons/arrow-out-right-square-half.svg">
+                            <span>Log-out</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<!------------------------------------------------ MAIN ------------------------------------------------>
+    <div class="main">
+        <div class="main-area">
+            <!----- Network Data ------->
+             <div class="networkData white-card">     
+                  <div>
+                    <div class="icon"><img src="../../../Resources/icons/arrow-in-up-square-half.svg"></div>
+                    <div>
+                        <div class="title"><span>Bytes Enviados</span></div>
+                        <div class="content">
+                            <div><span>20</span></div>
+                            <div><span>GB</span></div>
+                        </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="icon"><img src="../../../Resources/icons/arrow-out-down-square-half.svg"></div>
+                    <div>
+                        <div class="title">Bytes Recebidos</div>
+                        <div class="content">
+                            <div>20</div>
+                            <div>GB</div>
+                        </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="icon"><img src="../../../Resources/icons/arrow-in-up-square-half.svg"></div>
+                    <div>
+                        <div class="title">Pacotes Enviados</div>
+                        <div class="content">
+                            <div>20</div>
+                            <div>M</div>
+                        </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="icon"><img src="../../../Resources/icons/arrow-out-down-square-half.svg"></div>
+                    <div>
+                        <div class="title">Pacotes Recebidos</div>
+                        <div class="content">
+                            <div>20</div>
+                            <div>M</div>
+                        </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="icon"><img src="../../../Resources/icons/x.svg"></div>
+                    <div>
+                        <div class="title">Erros</div>
+                        <div class="content">
+                            <div>2</div>
+                            <div></div>
+                        </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="icon"><img src="../../../Resources/icons/trash.svg"></div>
+                    <div>
+                        <div class="title">Descartes</div>
+                        <div class="content">
+                            <div>6</div>
+                            <div></div>
+                        </div>
+                    </div>
+                  </div>
+            </div>
+            <!----- Speed Test Data ------>
+            <div class="speedTestData">
+                <div class="download">
+                    <div class="left-area">
+                        <div><span>Download</span></div>
+                        <div>
+                            <div><span>10.1</span></div>
+                            <div><span>Mbps</span></div>
+                        </div>
+                    </div>
+                    <div class="right-area"><img  src="../../../Resources/Images/folder.png"></div>
+                </div>
+                <div class="upload">
+                    <div class="left-area">
+                        <div><span>Upload</span></div>
+                        <div>
+                            <div><span>10.1</span></div>
+                            <div><span>Mbps</span></div>
+                        </div>
+                    </div>
+                    <div class="right-area"><img  src="../../../Resources/Images/upload.png"></div>
+                </div>
+                <div class="ping">
+                    <div class="left-area">
+                        <div><span>Ping</span></div>
+                        <div>
+                            <div><span>10.1</span></div>
+                            <div><span>ms</span></div>
+                        </div>
+                    </div>
+                    <div class="right-area"><img  src="../../../Resources/Images/bandwidth.png"></div>
+                </div>
+                <div class="bandwidth">
+                    <div class="left-area">
+                        <div><span>Bandwidth</span></div>
+                        <div>
+                            <div><span>10.1</span></div>
+                            <div><span>Mbps</span></div>
+                        </div>
+                    </div>
+                    <div class="right-area"><img  src="../../../Resources/Images/speedometer.png"></div>
+                </div>
+            </div>
+            <!------ Agents & Devices ------>
+            <div class="network-devices">
+                <div class="agents">
+                    <div class="top-area white-card">
+                        <div><span>Agents</span></div>
+                        <div>
+                            <div class="agent-info">
+                                <div class="icon"><img src="../../../Resources/Images/laptop.png"></div>
+                                <div>
+                                    <div class="model"><span>Model:</span><span>Acer</span></div>
+                                    <div class="os"><span>OS:</span><span>Linux</span></div>
+                                    <div class="status"><div> <div></div> </div>       <div><span>Active</span></div> </div>
+                                </div>
+                            </div>
+                            <div class="agent-info">
+                                <div class="icon"><img src="../../../Resources/Images/laptop.png"></div>
+                                <div>
+                                    <div class="model"><span>Model:</span><span>Lenovo</span></div>
+                                    <div class="os"><span>OS:</span><span>Windows</span></div>
+                                    <div class="status"><div> <div></div> </div>       <div><span>Active</span></div> </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-area white-card">
+                        <div><span>Agents CPU Utilization</span></div>
+                        <div class="graph-area">
+                            <div id="chart1"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="devices white-card">
+                    <div class="title">
+                        <div class="left"><span>Network Devices</span></div>
+                        <div class="right"><button>Ver Todos</button></div>
+                    </div>
+                    <div class="content">
+                        <div>
+                            <div class="icon"><img src="../../../Resources/icons/siren-alt.svg"></div>
+                            <div class="name"><span>Lenovo</span></div>
+                            <div class="ip-address"><span>192.168.1.11</span></div>
+                            <div class="mac-address"><span>ff:ff:ff:ff:ff:ff</span></div>
+                            <div class="state"><div></div></div>
+                        </div>
+                        <div>
+                            <div class="icon"><img src="../../../Resources/icons/siren-alt.svg"></div>
+                            <div class="name"><span>TP-link</span></div>
+                            <div class="ip-address"><span>192.168.1.11</span></div>
+                            <div class="mac-address"><span>ff:ff:ff:ff:ff:ff</span></div>
+                            <div class="state"><div></div></div>
+                        </div>
+                        <div>
+                            <div class="icon"><img src="../../../Resources/icons/siren-alt.svg"></div>
+                            <div class="name"><span>TP-link</span></div>
+                            <div class="ip-address"><span>192.168.1.11</span></div>
+                            <div class="mac-address"><span>ff:ff:ff:ff:ff:ff</span></div>
+                            <div class="state"><div></div></div>
+                        </div>
+                        <div>
+                            <div class="icon"><img src="../../../Resources/icons/siren-alt.svg"></div>
+                            <div class="name"><span>TP-link</span></div>
+                            <div class="ip-address"><span>192.168.1.11</span></div>
+                            <div class="mac-address"><span>ff:ff:ff:ff:ff:ff</span></div>
+                            <div class="state"><div></div></div>
+                        </div>
+                    </div>
+                    <div class="state-briefing">
+                        <div class="total">
+                            <div><div></div></div>
+                            <div><span>Total</span></div>
+                            <div><span>10</span></div>
+                        </div>
+                        <div class="online">
+                            <div><div></div></div>
+                            <div><span>Online</span></div>
+                            <div><span>10</span></div>
+                        </div>
+                        <div class="offline">
+                            <div><div></div></div>
+                            <div><span>Offline</span></div>
+                            <div><span>10</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--------- Default Gateway------------>
+            <div class="defaultGateway white-card">
+                <div class="title">
+                    <div class="left"><span>Default Gateway</span></div>
+                    <div class="right"><button>Ver Todos</button><div class="left"></div></div>
+                </div>
+                <div class="content">
+                    <table>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Tipo</th>
+                            <th>Velocidade</th>
+                            <th>Status</th>
+                            <th>Tamanho Máx.</th>
+                            <th>Ultimas Mudanças</th>
+                            <th>Pacotes Enviados</th>
+                            <th>Pacotes Recebidos</th>
+                            <th>Erros</th>
+                            <th>Descartes</th>
+                        </tr>
+                        <tr>
+                            <td>lan_int2_if</td>
+                            <td>111</td>
+                            <td>1233</td>
+                            <td>111</td>
+                            <td>161</td>
+                            <td>131</td>
+                            <td>11</td>
+                            <td>141</td>
+                            <td>114</td>
+                            <td>532</td>
+                        </tr>
+                         <tr>
+                            <td>lan_int2_if</td>
+                            <td>111</td>
+                            <td>1233</td>
+                            <td>111</td>
+                            <td>161</td>
+                            <td>131</td>
+                            <td>11</td>
+                            <td>141</td>
+                            <td>114</td>
+                            <td>532</td>
+                        </tr>
+                         <tr>
+                            <td>lan_int2_if</td>
+                            <td>111</td>
+                            <td>1233</td>
+                            <td>111</td>
+                            <td>161</td>
+                            <td>131</td>
+                            <td>11</td>
+                            <td>141</td>
+                            <td>114</td>
+                            <td>532</td>
+                        </tr>
+                         <tr>
+                            <td>lan_int2_if</td>
+                            <td>111</td>
+                            <td>1233</td>
+                            <td>111</td>
+                            <td>161</td>
+                            <td>131</td>
+                            <td>11</td>
+                            <td>141</td>
+                            <td>114</td>
+                            <td>532</td>
+                        </tr>
+                        
+                       
+                      </table>
+                </div>
+                <div class="pagination"></div>
+            </div>
+        </div>
+    </div>
+<!------------------------------------------------ FOOTER ------------------------------------------------>
+    <div class="footer">
 
-<!-------------------------------CHART--------------------------------------->
+    </div>
+</div>
 
-<!----- Chart 1 -->
+    <script src="./admin_main_page.js"></script>
+    <script src="../../common/common-script.js"></script>
+
+<!------------------- CHARTS --------------------->
+
 <script>
     var options = {
           series: [{
@@ -179,9 +411,10 @@
         }, {
           name: 'series2',
           data: [11, 32, 45, 32, 34, 52, 41]
-        }],
+        }
+    ],
           chart: {
-          height: 250,
+          height: 200,
           type: 'area'
         },
         dataLabels: {
@@ -205,153 +438,7 @@
         chart1.render();
 </script>
 
-<!---- Chart 2 -->
-<script>
-   var options = {
-          series: [{
-          name: 'Inflation',
-          data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
-        }],
-          chart: {
-          height: 280,
-          type: 'bar',
-        },
-        plotOptions: {
-          bar: {
-            borderRadius: 10,
-            dataLabels: {
-              position: 'top', // top, center, bottom
-            },
-          }
-        },
-        dataLabels: {
-          enabled: true,
-          formatter: function (val) {
-            return val + "%";
-          },
-          offsetY: -20,
-          style: {
-            fontSize: '12px',
-            colors: ["#304758"]
-          }
-        },
-        
-        xaxis: {
-          categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-          position: 'top',
-          axisBorder: {
-            show: false
-          },
-          axisTicks: {
-            show: false
-          },
-          crosshairs: {
-            fill: {
-              type: 'gradient',
-              gradient: {
-                colorFrom: '#D8E3F0',
-                colorTo: '#BED1E6',
-                stops: [0, 100],
-                opacityFrom: 0.4,
-                opacityTo: 0.5,
-              }
-            }
-          },
-          tooltip: {
-            enabled: true,
-          }
-        },
-        yaxis: {
-          axisBorder: {
-            show: false
-          },
-          axisTicks: {
-            show: false,
-          },
-          labels: {
-            show: false,
-            formatter: function (val) {
-              return val + "%";
-            }
-          }
-        
-        },
-        title: {
-          text: 'Monthly Inflation in Argentina, 2002',
-          floating: true,
-          offsetY: 330,
-          align: 'center',
-          style: {
-            color: '#444'
-          }
-        }
-        };
-
-
-        var chart2 = new ApexCharts(document.querySelector("#chart2"), options);
-        chart2.render();
-</script>
-
-<!---- Chart 3 -->
-<script>
-    var options = {
-          series: [44, 55, 13, 43, 22],
-          chart: {
-          width: 380,
-          type: 'pie',
-        },
-        labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }]
-        };
-
-        var chart3 = new ApexCharts(document.querySelector("#chart3"), options);
-        chart3.render();
-</script>
-
-<!-- Chart 4 -->
- <script>
-    var options = {
-          series: [14, 23, 21, 17, 15, 10, 12, 17, 21],
-          chart: {
-          type: 'polarArea',
-        },
-        stroke: {
-          colors: ['#fff']
-        },
-        fill: {
-          opacity: 0.8
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200,
-              height: 370,
-            },
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }]
-        };
-
-        var chart4 = new ApexCharts(document.querySelector("#chart4"), options);
-        chart4.render();
- </script>
-
-<!--------------------------------------------------------------------------->
-<script src="admin_main_page.js"></script>
-    
+<!------------------------------------------------>
 
 </body>
 </html>

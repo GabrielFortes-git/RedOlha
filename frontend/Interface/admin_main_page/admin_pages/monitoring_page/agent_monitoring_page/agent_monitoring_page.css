@@ -1,0 +1,15 @@
+.agents{
+    height: auto;
+    width: 100%;
+    
+}
+
+    .agent{
+        height: 200px;
+        width: 200px;
+    }
+
+.agent-metrics{
+    height: auto;
+    width: 100%;
+}

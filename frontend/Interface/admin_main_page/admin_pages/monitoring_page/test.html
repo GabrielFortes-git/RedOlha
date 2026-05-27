@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="monitoring_page.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!------ Apex Charts------->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!------------------------->
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="main-container">
+           <header class="header">
+            <div class="header-area">
+                <div class="logo">
+                    <div class="logo-img">
+                        <img src="../Resources/Images/Red0lha.svg">
+                    </div>
+                    <div class="logo-text">
+                        <h1>RedOlha</h1>
+                    </div>
+                </div>
+                <div class="middle">
+                    <div class="page-tree">
+                        <div>
+                            <a href="admin_main_page.html">/Home</a>
+                        </div>
+                        <div>
+                            <a href="admin_main_page.html">/. . .</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="toolbar">
+                    <div>
+                        <i class="bx bx-search-alt"></i>
+                    </div>
+                    <div>
+                       <i class="bx bx-user"></i>
+                    </div>
+                    <div>
+                        <i class="bx bx-menu"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+         <!---------------  MAIN ----------------->
+        <main class="main">
+            <div class="main-area">
+                <div class="stats">
+                    <div class="stat">
+                        <div class="stat-label">
+                            <span>Agents</span>
+                        </div>
+                        <div class="stat-content">
+                            <span style="color: orange">0000</span>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">
+                            <span>Active Agents</span>
+                        </div>
+                        <div class="stat-content">
+                            <span style="color: rgb(42, 148, 42)">0000</span>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">
+                            <span>Network Devices</span> <!-- latência, largura de banda-->
+                        </div>
+                        <div class="stat-content">
+                            <span style="color: rgb(81, 81, 189)">0000</span>
+                          
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">
+                            <span>Alerts</span>
+                        </div>
+                        <div class="stat-content">
+                            <span style="color: rgb(202, 64, 64)">0000</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="system-modules">
+                <!--  Module-->
+                    <div class="module">
+                        <div class="module-content">
+                            <div id="chart1">
+
+                    
+                            </div>
+                        </div>
+                    </div>
+                    <!--  Module -->
+                     <div class="module">
+                        <div class="module-content">
+                            <div id="chart2">
+
+                            </div>
+                        </div>
+                     </div>
+                     <!-- Module -->
+                      <div class="module">
+                        <div class="module-content">
+                            <div id="chart3">
+                               
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                      </div>
+                      <!--  Module -->
+                       <div class="module">
+                        <div class="module-content">
+                            <div id="chart4"></div>
+                            <div></div>
+                        </div>
+                       </div>
+                        <!--  Module-->
+                    <div class="module">
+                        <div class="module-content">
+                            <div>
+
+                    
+                            </div>
+                        </div>
+                    </div>
+                     <!--  Module-->
+                    <div class="module">
+                        <div class="module-content">
+                            <div id="chart">
+
+                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-area">
+             
+            </div>
+        </main>
+
+     <!---------------  ASIDE ----------------->
+
+        <div class="aside">
+             <div class="menu">
+                <div>
+
+                </div>
+                <div>
+                    
+                </div>
+            </div>
+        </div>
+
+    <!---------------  FOOTER ----------------->
+        <footer class="footer">
+            <div class="footer-area">
+              
+            </div>
+        </footer>
+   </div>
+
+<!-------------------------------CHART--------------------------------------->
+
+<!----- Chart 1 -->
+<script>
+    var options = {
+          series: [{
+          name: 'series1',
+          data: [31, 40, 28, 51, 42, 109, 100]
+        }, {
+          name: 'series2',
+          data: [11, 32, 45, 32, 34, 52, 41]
+        }],
+          chart: {
+          height: 250,
+          type: 'area'
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        xaxis: {
+          type: 'datetime',
+          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+        },
+        tooltip: {
+          x: {
+            format: 'dd/MM/yy HH:mm'
+          },
+        },
+        };
+
+        var chart1 = new ApexCharts(document.querySelector("#chart1"), options);
+        chart1.render();
+</script>
+
+<!---- Chart 2 -->
+<script>
+   var options = {
+          series: [{
+          name: 'Inflation',
+          data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
+        }],
+          chart: {
+          height: 280,
+          type: 'bar',
+        },
+        plotOptions: {
+          bar: {
+            borderRadius: 10,
+            dataLabels: {
+              position: 'top', // top, center, bottom
+            },
+          }
+        },
+        dataLabels: {
+          enabled: true,
+          formatter: function (val) {
+            return val + "%";
+          },
+          offsetY: -20,
+          style: {
+            fontSize: '12px',
+            colors: ["#304758"]
+          }
+        },
+        
+        xaxis: {
+          categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          position: 'top',
+          axisBorder: {
+            show: false
+          },
+          axisTicks: {
+            show: false
+          },
+          crosshairs: {
+            fill: {
+              type: 'gradient',
+              gradient: {
+                colorFrom: '#D8E3F0',
+                colorTo: '#BED1E6',
+                stops: [0, 100],
+                opacityFrom: 0.4,
+                opacityTo: 0.5,
+              }
+            }
+          },
+          tooltip: {
+            enabled: true,
+          }
+        },
+        yaxis: {
+          axisBorder: {
+            show: false
+          },
+          axisTicks: {
+            show: false,
+          },
+          labels: {
+            show: false,
+            formatter: function (val) {
+              return val + "%";
+            }
+          }
+        
+        },
+        title: {
+          text: 'Monthly Inflation in Argentina, 2002',
+          floating: true,
+          offsetY: 330,
+          align: 'center',
+          style: {
+            color: '#444'
+          }
+        }
+        };
+
+
+        var chart2 = new ApexCharts(document.querySelector("#chart2"), options);
+        chart2.render();
+</script>
+
+<!---- Chart 3 -->
+<script>
+    var options = {
+          series: [44, 55, 13, 43, 22],
+          chart: {
+          width: 380,
+          type: 'pie',
+        },
+        labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
+
+        var chart3 = new ApexCharts(document.querySelector("#chart3"), options);
+        chart3.render();
+</script>
+
+<!-- Chart 4 -->
+ <script>
+    var options = {
+          series: [14, 23, 21, 17, 15, 10, 12, 17, 21],
+          chart: {
+          type: 'polarArea',
+        },
+        stroke: {
+          colors: ['#fff']
+        },
+        fill: {
+          opacity: 0.8
+        },
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200,
+              height: 370,
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
+
+        var chart4 = new ApexCharts(document.querySelector("#chart4"), options);
+        chart4.render();
+ </script>
+
+<!--------------------------------------------------------------------------->
+
+  <script src="monitoring_page.js"></script>
+</body>
+</html>
