@@ -21,6 +21,7 @@ class ComposerStaticInit5a9cdac556bc224b8f4676ac39920f7b
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
             'ParagonIE\\Sodium\\' => 17,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'G' =>
         array (
@@ -51,6 +52,10 @@ class ComposerStaticInit5a9cdac556bc224b8f4676ac39920f7b
         'ParagonIE\\Sodium\\' =>
         array (
             0 => __DIR__ . '/..' . '/paragonie/sodium_compat/namespaced',
+        ),
+        'PHPMailer\\PHPMailer\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'GuzzleHttp\\Psr7\\' =>
         array (

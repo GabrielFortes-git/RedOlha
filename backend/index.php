@@ -4,6 +4,7 @@ include 'login_register.php';
 include 'agent_data.php';
 include 'network_data.php';
 include 'display_data.php';
+include 'emails.php';
     
 // Permite que o frontend na porta 3000 aceda a este script
 header("Access-Control-Allow-Origin: http://localhost:3000");
@@ -71,6 +72,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                             "message" => "Request type not specified"
                             ]);
                     }  
+                    break;
+                case "email":
+                    $sendEmail = sendEmail($dataRecived->code);
+                    echo json_encode([
+                        "status" => "Code Received!",
+                        "message" => $sendEmail
+                    ]);
                     break;
                 default:
                     echo json_encode([

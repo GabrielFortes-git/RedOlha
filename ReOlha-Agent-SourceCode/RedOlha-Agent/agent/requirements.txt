@@ -1,0 +1,5 @@
+requests
+scapy
+psutil
+uuid
+ifaddr

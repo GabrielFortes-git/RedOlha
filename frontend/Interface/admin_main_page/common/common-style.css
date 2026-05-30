@@ -23,6 +23,7 @@ body{
     grid-template-columns: 250px 1fr 1fr;
     grid-template-rows: 90px auto 100px;
     background-color: #ffffff;
+    position: relative;
 }
 
 /*--------------------------  Standardized Styles --------------------------------*/
@@ -240,7 +241,7 @@ body{
             justify-content: start;
         }
         .menu-options1 > div > ul > li:hover, .menu-options2 > div > ul > li:hover{
-            background-color: rgba(0, 36, 58, 0.443);
+            background-color: rgba(68, 162, 220, 0.443);
         }
 
 
@@ -320,6 +321,113 @@ body{
     border-top: solid 1px rgb(233, 233, 233);
     margin: 30px;
 }
+
+
+.administrationPage{
+    display: none;
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(128, 128, 128, 0.761);
+    z-index: 5;
+}
+
+    .show{ 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .administrationPage .administration-area{
+        height: 80%;
+        width: 70%;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+        .administration-area .tittle{
+            height: 8%;
+            width: 100%;
+            border-bottom: solid 1px rgb(213, 213, 213);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+            .administration-area .tittle > div{
+                height: 100%;
+                width: auto;
+                padding: 0px 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: gray;
+                font-size: 1.3em;  
+                display: flex;
+                gap: 10px               
+            }
+
+            .administration-area .tittle  button{
+                padding: 8px 20px;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                font-size: 0.9em;
+            }
+
+        .administration-area .content{
+            height: 92%;
+            width: 100%;
+            display: flex;
+        }
+
+            .administration-area .content .menu{
+                height: 100%;
+                width: 20%;
+                border-right: solid 1px rgb(222, 222, 222);
+            }
+
+                .administration-area .content .menu > div{
+                    width: 100%;
+                    height: auto;
+                    display: flex;
+                    justify-content: start;
+                    color: rgb(6, 15, 59);
+                    font-size: 1.3em;
+                    font-weight: 500;
+                    transition: all 1s;
+                    border-radius: 10px;
+                }
+
+                .administration-area .content .menu > div:hover{
+                    background-color: rgba(134, 187, 245, 0.292);
+                }
+
+            .administration-area .content .configuring-area{
+                height: 100%;
+                width: 80%;
+            }
+
+                .configuring-area-option{
+                    height: 100%;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                    .configuring-area-option-tittle{
+                        height: 20%;
+                        width: 100%;
+                    }
+
+                    .configuring-area-option-form{
+                        height: 80%;
+                        width: 100%;
+                        background-color: lightblue;
+                    }
 
 
 

@@ -43,6 +43,12 @@ services:
       - backend
     restart: always
 
+  drawio:
+    image: jgraph/drawio
+    restart: always
+    ports:
+      - "8443:8080"
+
   # Python scripts (rede / monitorização)
   python:
     build: ./scripts

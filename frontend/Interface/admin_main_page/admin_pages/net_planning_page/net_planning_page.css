@@ -19,21 +19,25 @@
             background-color: rgb(255, 255, 255);
             display: flex;
             flex-direction: column;
+
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
         }
 
             .top-area > div .content .top{
-                height: 70%;
+                height: 75%;
                 width: 100%;
             }
 
             .top-area > div .content .bottom{
-                height: 30%;
+                height: 25%;
                 width: 100%;
                 background-color: lightcoral;
                 display: flex;
                 justify-content: start;
                 align-items: center;
                 padding-left: 40px;
+                border-bottom-left-radius: 10px;
             }
 
                 .top-area > div .content .bottom > button{

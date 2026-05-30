@@ -47,10 +47,10 @@
                 display: flex;
                 flex-direction: column;
             }
-                    .monitoring{background-color: rgb(219, 224, 255);}
-                    .alerts{background-color: rgb(255, 218, 218);}
+                    .monitoring{background-color: rgb(219, 233, 255);}
+                    .alerts{background-color: rgb(253, 221, 221);}
                     .manutention{background-color: rgb(227, 250, 223);}
-                    .netPlanning{background-color: rgb(241, 240, 222);}
+                    .netPlanning{background-color: rgb(255, 252, 229);}
 
                 .module-top-area{
                     height: 60%;
@@ -160,12 +160,6 @@
                         border-radius: 10px;
                         display: flex;
                     }
-
-                     .module-bottom-area-monitorization > div{box-shadow:   2px 2px 10px rgb(211, 219, 246);}
-                     .module-bottom-area-alerts > div{box-shadow:   2px 2px 10px rgb(255, 219, 219);}
-                     .module-bottom-area-manutention > div{box-shadow:   1px 1px 10px rgba(106, 209, 50, 0.379);}
-                     .module-bottom-area-netPlanning > div{box-shadow:   2px 2px 10px rgba(211, 214, 33, 0.395);}
-
 
                         .module-bottom-area > div > div:nth-child(1){
                             height: 100%;
