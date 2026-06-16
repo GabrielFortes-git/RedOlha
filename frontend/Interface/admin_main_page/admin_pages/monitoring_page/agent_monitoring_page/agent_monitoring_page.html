@@ -125,12 +125,31 @@
 <!------------------------------------------------ MAIN ------------------------------------------------>
     <div class="main">
         <div class="main-area">
-            <div class="agents">
-                <div class="agent white-card"></div>
-                <div class="agent white-card"></div>
+            <div class="top-area">
+                <div class="agent-info">
+                    <div class="icon"><img src="../../../../Resources/Images/laptop.png"></div>
+                    <div>
+                        <div class="model"><span>Model:</span><span>Acer</span></div>
+                        <div class="os"><span>OS:</span><span>Linux</span></div>
+                        <div class="status"><div> <div></div> </div>       <div><span>Active</span></div> </div>
+                    </div>
+                </div>
+                <div class="agent-info">
+                    <div class="icon"><img src="../../../../Resources/Images/laptop.png"></div>
+                        <div>
+                        <div class="model"><span>Model:</span><span>Lenovo</span></div>
+                        <div class="os"><span>OS:</span><span>Windows</span></div>
+                        <div class="status"><div> <div></div> </div>       <div><span>Active</span></div> </div>
+                    </div>
+                </div> 
             </div>
-            <div class="agents-metrics">
-
+            <div class="bottom-area">
+                <div>
+                    <div class="chart-container cpu-utilization"></div>
+                    <div class="chart-container ram-utilization"></div>
+                </div>
+                <div></div>
+                <div></div>
             </div>
         </div>
     </div>
@@ -140,7 +159,7 @@
     </div>
 </div>
 
-    <script src="./admin_main_page.js"></script>
+    <script src="./agent_monitoring_page.js"></script>
     <script src="../../../common/common-script.js"></script>
 </body>
 </html>

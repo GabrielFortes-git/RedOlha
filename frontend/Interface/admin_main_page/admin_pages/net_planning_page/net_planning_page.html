@@ -126,30 +126,48 @@
 <!------------------------------------------------ MAIN ------------------------------------------------>
     <div class="main">
         <div class="main-area">
-            <div class="top-area">
-                <div class="subnet-module white-card">
-                    <div class="content">
-                        <div class="top">
-                            <div class="icon"></div>
-                            <div class="description"></div>
-                        </div>
-                        <div class="bottom">
-                            <button id="subnet-module-btn">Acessar</button>
-                        </div>
-                    </div>
-                    <div class="banner"></div>
-                </div>
-                <div class="net-topology-module white-card">
-                    <div class="content">
-                        <div class="top"></div>
-                        <div class="bottom">
-                            <button id="net-topology-module-btn">Acessar</button>
-                        </div>
-                    </div>
-                    <div class="banner"></div>
-                </div>
+            
+            <div class="page-description">
+                <span class="page-description-tittle">Planeamento de Rede</span>
+                <span class="page-description-text">Planeie a sua rede, recorrendo ao cálculo de sub-redes e a criação de toposogias de rede.</span>
             </div>
-            <div class="bottom-area"></div>
+ 
+            <!-- Pesquisa e filtragem de quipamentos e manutenções -->
+           <div class="opcoes-escolha">
+
+                <div class="calculo-subredes white-card">
+                    <div class="icon">
+                        <div><img src="../../../Resources/icons/computer-blue.svg"></div>
+                    </div>
+                    <div class="text">
+                        <span class="tittle" style="color:rgb(18, 18, 122);">Cálculo de Sub-Redes</span>
+                        <span class="description">Planeamento de rede com recurso ao cálculo de IPv4.</span>
+                    </div>
+                    <div class="link">
+                        <div id="subnet-module-btn">
+                            <div ><span>Acessar</span></div>
+                            <div><img src="../../../Resources/icons/arrow-right-stroke-black.svg"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="topologia-rede white-card">
+                    <div class="icon">
+                        <div><img src="../../../Resources/icons/spanner-green.svg"></div>
+                    </div>
+                    <div class="text">
+                        <span class="tittle" style="color:rgb(42, 128, 20);">Topologia de Rede</span>
+                        <span class="description">Mapeie como os dispositivos estão interligádos na rede.</span>
+                    </div>
+                    <div class="link">
+                        <div id="net-topology-module-btn">
+                            <div><span>Acessar</span></div>
+                            <div><img src="../../../Resources/icons/arrow-right-stroke-black.svg"></div>
+                        </div>
+                    </div>
+                </div>
+                
+           </div>
         </div>
     </div>
 <!------------------------------------------------ FOOTER ------------------------------------------------>

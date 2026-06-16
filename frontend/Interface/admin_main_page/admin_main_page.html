@@ -50,8 +50,7 @@
     <div class="aside">
         <div class="logo">
           <div>
-            <img src="../Resources/Images/Red0lha.svg">
-            <span>RedOlha</span>
+            <img src="../Resources/Images/RoH(1).png">
           </div>
         </div>
         <div class="menu-options1">
@@ -148,7 +147,7 @@
                                     <div class="module-stat">
                                         <div><img src="../Resources/icons/laptop.svg"></div>
                                         <div>
-                                            <div><span>-</span></div>
+                                            <div><span id="numberOfAgents">-</span></div>
                                             <div><span>Agentes</span></div>
                                         </div>
                                     </div>
@@ -188,14 +187,14 @@
                                     <div class="module-stat">
                                         <div><img src="../Resources/icons/alert-triangle-red.svg"></div>
                                         <div>
-                                            <div><span>-</span></div>
+                                            <div><span id="numberOfAlerts" style="color: rgb(115, 2, 2)">-</span></div>
                                             <div><span>Alertas</span></div>
                                         </div>
                                     </div>
                                     <div class="module-stat">
                                         <div><img src="../Resources/icons/bell-ring.svg"></div>
                                         <div>
-                                            <div><span>-</span></div>
+                                            <div><span id="numberOfCriticAlerts" style="color: rgb(115, 2, 2)">-</span></div>
                                             <div>Alertas Críticos</div>
                                         </div>
                                     </div>
@@ -228,14 +227,14 @@
                                     <div class="module-stat">
                                         <div><img src="../Resources/icons/calendar-check.svg"></div>
                                         <div>
-                                            <div><span>-</span></div>
+                                            <div><span id="numberRegisters" style="color: rgb(17, 54, 0)">-</span></div>
                                             <div><span>Registros</span></div>
                                         </div>
                                     </div>
                                     <div class="module-stat">
                                         <div><img src="../Resources/icons/clock.svg"></div>
                                         <div>
-                                            <div><span>-</span></div>
+                                            <div><span id="lastRegister" style="font-size: 20px; color: rgb(17, 54, 0)">-</span></div>
                                             <div>Último Registro</div>
                                         </div>
                                     </div>
@@ -266,17 +265,17 @@
                             <div>
                                 <div>
                                     <div class="module-stat">
-                                        <div><img src="../Resources/icons/laptop.svg"></div>
+                                        <div><img src="../Resources/icons/network-chart (1).svg"></div>
                                         <div>
-                                            <div><span>-</span></div>
-                                            <div><span>Dispositivos</span></div>
+                                            <div><span style="font-size: 20px; color: rgb(160, 160, 2)">Sub-redes</span></div>
+                                            <!-- <div><span style="font-size: 40px;">IPv4</span></div> -->
                                         </div>
                                     </div>
                                     <div class="module-stat">
-                                        <div><img src="../Resources/icons/doughnut-chart.svg"></div>
+                                        <div><img src="../Resources/icons/share.svg"></div>
                                         <div>
-                                            <div><span>-</span></div>
-                                            <div>Download</div>
+                                            <div><span style="font-size: 20px; color: rgb(160, 160, 2)">Topologias</span></div>
+                                            <!-- <div>Download</div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -293,7 +292,7 @@
                         <div class="content">
                             <div>
                                 <div><img src="../Resources/icons/laptop.svg"></div>
-                                <div><span>-</span></div>
+                                <div><span id="numberOfDevices">-</span></div>
                                 <div>Dispositivos</div>
                             </div>
                             <div>
@@ -308,21 +307,58 @@
                             </div>
                             <div>
                                 <div><img src="../Resources/icons/ethernet.svg"></div>
-                                <div><span>-</span></div>
+                                <div><span id="data-drops">-</span></div>
                                 <div>Drops</div>
                             </div>
                         </div>
                     </div>
-                     <div class="card card-alerts">
-                        <div><span><img src="../Resources/icons/workflow-alt.svg">  Atividades Recentes</span></div>
-                        <div class="recent-alerts-content">
-                            <div></div>
+                     <div class="card card-agents">
+                        <div><span style="color:gray;"><img src="../Resources/icons/workflow-alt.svg">Agentes</span></div>
+                        <div id="agentsContainer" class="card-agents-content">
+                            <!-- <div class="agent-info">
+                                <div class="icon"><img src="../Resources/Images/laptop.png"></div>
+                                <div>
+                                    <div class="model"><span>Model:</span><span>Acer</span></div>
+                                    <div class="os"><span>OS:</span><span>Linux</span></div>
+                                    <div class="status"><div> <div></div> </div>       <div><span>Active</span></div> </div>
+                                </div>
+                            </div>
+                            <div class="agent-info">
+                                <div class="icon"><img src="../Resources/Images/laptop.png"></div>
+                                <div>
+                                    <div class="model"><span>Model:</span><span>Lenovo</span></div>
+                                    <div class="os"><span>OS:</span><span>Windows</span></div>
+                                    <div class="status"><div> <div></div> </div>       <div><span>Active</span></div> </div>
+                                </div>
+                            </div> -->
                         </div>
                      </div>
                </div>
             </div>
             <div class="area2">
-                <div class="card">
+                <div class="card card-alerts">
+                    <div class="label"><span>Alertas Recentes</span></div>
+                    <div class="content">
+                        <table id="tableAlerts">
+                        <tr>
+                            <th></th>
+                            <th>Nível</th>
+                            <th>Agent</th>
+                            <th>Tipo</th>
+                            <th>Descrição</th>
+                        </tr>
+                        <!-- <tr>
+                            <td class="td-criticity"><div></div></td>
+                            <td>10</td>
+                            <td>1</td>
+                            <td>Uso de Memoria Virtual (RAM)</td>
+                            <td>A memória RAM está quase cheia. Feche as abas do navegador ou programas que não está a usar.</td>
+                        </tr> -->
+                         
+                        
+                       
+                      </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -332,7 +368,7 @@
         
     </div>
 
-    <div id="administrationPage" class="administrationPage show">
+    <div id="administrationPage" class="administrationPage">
         <div class="administration-area">
             <div class="tittle">
                 <div><span>Administration</span></div>

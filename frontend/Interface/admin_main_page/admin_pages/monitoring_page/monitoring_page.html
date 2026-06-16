@@ -132,7 +132,7 @@
                     <div>
                         <div class="title"><span>Bytes Enviados</span></div>
                         <div class="content">
-                            <div><span>20</span></div>
+                            <div><span id="bytesEnviados">-</span></div>
                             <div><span>GB</span></div>
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                     <div>
                         <div class="title">Bytes Recebidos</div>
                         <div class="content">
-                            <div>20</div>
+                            <div><span id="bytesRecebidos">-</span></div>
                             <div>GB</div>
                         </div>
                     </div>
@@ -152,7 +152,7 @@
                     <div>
                         <div class="title">Pacotes Enviados</div>
                         <div class="content">
-                            <div>20</div>
+                            <div><span id="pacotesEnviados">-</span></div>
                             <div>M</div>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                     <div>
                         <div class="title">Pacotes Recebidos</div>
                         <div class="content">
-                            <div>20</div>
+                            <div><span id="pacotesRecebidos">-</span></div>
                             <div>M</div>
                         </div>
                     </div>
@@ -172,7 +172,7 @@
                     <div>
                         <div class="title">Erros</div>
                         <div class="content">
-                            <div>2</div>
+                            <div><span id="erros">-</span></div>
                             <div></div>
                         </div>
                     </div>
@@ -182,7 +182,7 @@
                     <div>
                         <div class="title">Descartes</div>
                         <div class="content">
-                            <div>6</div>
+                            <div><span id="descartes">-</span></div>
                             <div></div>
                         </div>
                     </div>
@@ -194,7 +194,7 @@
                     <div class="left-area">
                         <div><span>Download</span></div>
                         <div>
-                            <div><span>10.1</span></div>
+                            <div><span id="download">10.1</span></div>
                             <div><span>Mbps</span></div>
                         </div>
                     </div>
@@ -204,7 +204,7 @@
                     <div class="left-area">
                         <div><span>Upload</span></div>
                         <div>
-                            <div><span>10.1</span></div>
+                            <div><span id="upload">10.1</span></div>
                             <div><span>Mbps</span></div>
                         </div>
                     </div>
@@ -214,7 +214,7 @@
                     <div class="left-area">
                         <div><span>Ping</span></div>
                         <div>
-                            <div><span>10.1</span></div>
+                            <div><span id="ping">10.1</span></div>
                             <div><span>ms</span></div>
                         </div>
                     </div>
@@ -224,7 +224,7 @@
                     <div class="left-area">
                         <div><span>Bandwidth</span></div>
                         <div>
-                            <div><span>10.1</span></div>
+                            <div><span id="bandwidth">10.1</span></div>
                             <div><span>Mbps</span></div>
                         </div>
                     </div>
@@ -234,10 +234,10 @@
             <!------ Agents & Devices ------>
             <div class="network-devices">
                 <div class="agents">
-                    <div class="top-area white-card">
+                    <div id="agentMonitoringPageLink1" class="top-area white-card">
                         <div><span>Agents</span></div>
-                        <div>
-                            <div class="agent-info">
+                        <div id="agentsContainer">
+                            <!-- <div class="agent-info">
                                 <div class="icon"><img src="../../../Resources/Images/laptop.png"></div>
                                 <div>
                                     <div class="model"><span>Model:</span><span>Acer</span></div>
@@ -252,10 +252,10 @@
                                     <div class="os"><span>OS:</span><span>Windows</span></div>
                                     <div class="status"><div> <div></div> </div>       <div><span>Active</span></div> </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
-                    <div class="bottom-area white-card">
+                    <div id="agentMonitoringPageLink2" class="bottom-area white-card">
                         <div><span>Agents CPU Utilization</span></div>
                         <div class="graph-area">
                             <div id="chart1"></div>
@@ -267,35 +267,15 @@
                         <div class="left"><span>Network Devices</span></div>
                         <div class="right"><button>Ver Todos</button></div>
                     </div>
-                    <div class="content">
-                        <div>
+                    <div id="networkDevicesContainer" class="content">
+                        <!-- <div>
                             <div class="icon"><img src="../../../Resources/icons/siren-alt.svg"></div>
                             <div class="name"><span>Lenovo</span></div>
                             <div class="ip-address"><span>192.168.1.11</span></div>
                             <div class="mac-address"><span>ff:ff:ff:ff:ff:ff</span></div>
                             <div class="state"><div></div></div>
-                        </div>
-                        <div>
-                            <div class="icon"><img src="../../../Resources/icons/siren-alt.svg"></div>
-                            <div class="name"><span>TP-link</span></div>
-                            <div class="ip-address"><span>192.168.1.11</span></div>
-                            <div class="mac-address"><span>ff:ff:ff:ff:ff:ff</span></div>
-                            <div class="state"><div></div></div>
-                        </div>
-                        <div>
-                            <div class="icon"><img src="../../../Resources/icons/siren-alt.svg"></div>
-                            <div class="name"><span>TP-link</span></div>
-                            <div class="ip-address"><span>192.168.1.11</span></div>
-                            <div class="mac-address"><span>ff:ff:ff:ff:ff:ff</span></div>
-                            <div class="state"><div></div></div>
-                        </div>
-                        <div>
-                            <div class="icon"><img src="../../../Resources/icons/siren-alt.svg"></div>
-                            <div class="name"><span>TP-link</span></div>
-                            <div class="ip-address"><span>192.168.1.11</span></div>
-                            <div class="mac-address"><span>ff:ff:ff:ff:ff:ff</span></div>
-                            <div class="state"><div></div></div>
-                        </div>
+                        </div> -->
+                        
                     </div>
                     <div class="state-briefing">
                         <div class="total">
@@ -396,9 +376,31 @@
     <div class="footer">
 
     </div>
+
+<!----------------------- FLOATING PAGES ------------------------->
+
+    <!-- <div class="networkDevicesFloatingPage">
+        <div class="networkDevicesArea">
+            <div class="label">
+                <span>Network Devices</span>
+                <button type="button">Exit</button>
+            </div>
+            <div class="filter">
+                <div><span>Todos</span></div>
+                <div><span>Ativos</span></div>
+            </div>
+            <div id="networkDevicesAreaContainer" class="content">
+                <div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
 </div>
 
-    <script src="./admin_main_page.js"></script>
+    <script src="./monitoring_page.js"></script>
     <script src="../../common/common-script.js"></script>
 
 <!------------------- CHARTS --------------------->
@@ -432,13 +434,14 @@
             format: 'dd/MM/yy HH:mm'
           },
         },
+        
         };
 
         var chart1 = new ApexCharts(document.querySelector("#chart1"), options);
         chart1.render();
 </script>
 
-<!------------------------------------------------>
+
 
 </body>
 </html>

@@ -1,15 +1,113 @@
-.agents{
+
+.top-area{
     height: auto;
     width: 100%;
-    
+    padding: 20px;
+    border-bottom: 1px solid rgb(205, 205, 205);
+    display: flex;
+    gap: 20px;
 }
 
-    .agent{
-        height: 200px;
-        width: 200px;
+          .agent-info{
+                    height: 120px;
+                    width: 300px;
+                    display: flex;
+                    padding: 15px;
+                    border-radius: 10px;
+                    background-color: rgb(233, 233, 233);
+                    transition: all 1s;
+                }
+
+                .agent-info:hover{
+                    background-color: rgb(197, 197, 197);
+                }
+                    .agent-info .icon{
+                        height: 100%;
+                        width: 30%;
+                        padding: 20px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 10px;
+                        background-color: rgb(141, 141, 141);
+                    }
+
+                        .agent-info .icon > img{
+                            height: 100%;
+                        }
+
+                    .agent-info > div:nth-child(2){
+                        height: 100%;
+                        width: 70%;
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                        .agent-info > div:nth-child(2) > div{
+                            width: 100%;
+                            height: 33.3333%;
+                            display: flex;
+                            justify-content: start;
+                            align-items: center;
+                            padding-left: 20px;
+                            display: flex;
+                            gap: 7px;
+                        }
+
+                        .agent-info .model > span:nth-child(1), .agent-info .os > span:nth-child(1){
+                            color: gray;
+                            font-weight: 700;
+                        }
+
+                        .agent-info .model > span:nth-child(2), .agent-info .os > span:nth-child(2) {
+                            color: black;
+                            font-weight: 600;
+                        }
+
+                        .agent-info .status{
+                            display: flex;
+                        }
+
+                            .agent-info .status > div:nth-child(1){
+                                height: 100%;
+                                width: 10%;
+                                display: flex;
+                                justify-content: start;
+                                align-items: center;
+                            }
+
+                                 .agent-info .status > div:nth-child(1) > div{
+                                    height: 20px;
+                                    width: 20px;
+                                    border-radius: 50%;
+                                    background-color: green;
+                                }
+
+                    
+
+                            .agent-info .status > div:nth-child(2){
+                                height: 100%;
+                                width: 90%;
+                                display: flex;
+                                justify-content: start;
+                                align-items: center;
+                                color: green;
+                                font-weight: 700;
+                            }
+                
+
+
+.bottom-area{
+    height: auto;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+    .bottom-area > div{
+        height: 300px;
+        width: 100%;
+        background-color: rgb(215, 215, 215);
     }
-
-.agent-metrics{
-    height: auto;
-    width: 100%;
-}

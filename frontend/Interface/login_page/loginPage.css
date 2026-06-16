@@ -83,6 +83,9 @@ body{
 
 .login .logo{
   height: 40%;
+  padding: 20px;
+  display: flex;
+  justify-content: start;
 }
 
 .register .logo{

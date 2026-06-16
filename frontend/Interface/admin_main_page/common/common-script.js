@@ -21,15 +21,15 @@ setInterval(updateClock, 1000)
 
 /**===================================================================================================================== */
 
-const administrationPageLink = document.querySelector("#administrationPageLink");
-const administrationPage = document.querySelector("#administrationPage");
-const administrationExitBtn = document.querySelector("#administrationExitBtn");
-const administrationSaveBtn = document.querySelector("#administrationSaveBtn");
+// const administrationPageLink = document.querySelector("#administrationPageLink");
+// const administrationPage = document.querySelector("#administrationPage");
+// const administrationExitBtn = document.querySelector("#administrationExitBtn");
+// const administrationSaveBtn = document.querySelector("#administrationSaveBtn");
 
-administrationPageLink.addEventListener("click", function(){
-    administrationPage.classList.toggle("show");
-});
+// administrationPageLink.addEventListener("click", function(){
+//     administrationPage.classList.toggle("show");
+// });
 
-administrationExitBtn.addEventListener("click", function(){
-   administrationPage.classList.remove("show");
-});
+// administrationExitBtn.addEventListener("click", function(){
+//    administrationPage.classList.remove("show");
+// });

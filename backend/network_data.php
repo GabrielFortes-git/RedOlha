@@ -36,10 +36,17 @@ function storeDataInTable_speedTestData($data){
             $options
         );
 
+        $getDrops = $connection->query("SELECT dropin FROM net_io_counters_network ORDER BY id DESC LIMIT 1");
+        $drops = $getDrops->fetch_row();
+        $getNumberOfDevices = $connection->query("SELECT COUNT(*) FROM devices");
+        $numberOfDevices = $getNumberOfDevices->fetch_row();
+
         $value = [
             "download" => round($data->download,1),
             "upload" => round($data->upload,1),
             "ping" => round($data->ping,1),
+            "drops" => $drops ?? '1',
+            "devices" => $numberOfDevices ?? "0"
         ];
         $pusher->trigger('channel-speedTestData', 'event-SpeedTestData', $value);
     }

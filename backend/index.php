@@ -5,6 +5,7 @@ include 'agent_data.php';
 include 'network_data.php';
 include 'display_data.php';
 include 'emails.php';
+include 'manutention_data.php';
     
 // Permite que o frontend na porta 3000 aceda a este script
 header("Access-Control-Allow-Origin: http://localhost:3000");
@@ -12,6 +13,11 @@ header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization, header-name");
 header("Content-Type: application/json");
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit(0);
+}
 
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -45,7 +51,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 case 'agent':
                     $agentDataManagement = manageAgentData($dataRecived->data);
                     header('Content-Type: application/json');
-                    echo json_encode($agentDataManagement);
                     echo json_encode([
                         "status" => "Ok",
                         "message" => "Request Received!",
@@ -65,7 +70,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                             echo json_encode($pageData);
                             break;
                         case "monitoring_page":
-                        case "manutention_page":
+                            $pageData = getMonitoringPageData();
+                            echo json_encode($pageData);
+                            break;
                         default:
                             echo json_encode([
                             "status" => "error",
@@ -78,6 +85,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     echo json_encode([
                         "status" => "Code Received!",
                         "message" => $sendEmail
+                    ]);
+                    break;
+                case "manutentionRegisterDevice":
+                    $manageManutentionDevice = manageManutentionDeviceData($dataRecived);
+                    echo json_encode([
+                        "status" => "Data Received!",
+                        "message" => $manageManutentionDevice
                     ]);
                     break;
                 default:

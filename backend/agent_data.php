@@ -41,10 +41,10 @@ function storeDataInTable_systemLevelMetrics($agentId, $data){
         $alertDescription = "Uso de processador elevado. O computador pode começar a aquecer ou a fazer mais ruído na ventoinha.";
         create_alert($agentId, 6, $alertType1, $alertDescription);
     }elseif($data->cpuUsage >= 80 && $data->cpuUsage <90){
-        $alertDescription = "O processador está quase no limite ({$data->cpuUsage} %). Evite iniciar novas tarefas pesadas até que a carga diminua.";
+        $alertDescription = "O processador está quase no limite. Evite iniciar novas tarefas pesadas até que a carga diminua.";
         create_alert($agentId, 8, $alertType1, $alertDescription);        
     }elseif($data->cpuUsage > 90){
-        $alertDescription = "Processador esgotado ({$data->cpuUsage} %). O sistema está prestes a congelar. Aguarde que os processos terminem ou feche a aplicação travada.";
+        $alertDescription = "Processador esgotado. O sistema está prestes a congelar. Aguarde que os processos terminem ou feche a aplicação travada.";
         create_alert($agentId, 10, $alertType1, $alertDescription);
     }
 
@@ -98,10 +98,10 @@ function storeDataInTable_disk_usage($agentId,$foreignKey, $data){
         $alertDescription = "Espaço em disco a esgotar. Recomendamos uma limpeza preventiva de ficheiros temporários.";
         create_alert($agentId,6, $alertType, $alertDescription);
     }elseif($diskUsagePercentage >= 80 && $diskUsagePercentage <90){
-        $alertDescription = "O disco está quase cheio ({$diskUsagePercentage} %). Apague ficheiros desnecessários ou mova-os para a nuvem agora";
+        $alertDescription = "O disco está quase cheio. Apague ficheiros desnecessários ou mova-os para a nuvem agora";
         create_alert($agentId,8, $alertType, $alertDescription);        
     }elseif($diskUsagePercentage > 90){
-        $alertDescription = "Espaço em disco esgotado ({$diskUsagePercentage} %). O computador pode ficar lento ou bloquear. Liberte espaço imediatamente!";
+        $alertDescription = "Espaço em disco esgotado. O computador pode ficar lento ou bloquear. Liberte espaço imediatamente!";
         create_alert($agentId,10, $alertType, $alertDescription);
     }
 
@@ -110,15 +110,15 @@ function storeDataInTable_disk_usage($agentId,$foreignKey, $data){
 function storeDataInTable_virtual_memory($agentId, $foreignKey, $data){
     $connection = $GLOBALS['conn'];
     $insertVirtualMemory = $connection->query("INSERT INTO virtual_memory(systemLevelMetrics_id,total,available,percent,used,free,active,inactive,buffers,cached,shared,slab)VALUES($foreignKey,$data->total , $data->available , $data->percent , $data->used , $data->free , $data->active , $data->inactive , $data->buffers , $data->cached , $data->shared , $data->slab)");
-    $alertType = "Uso de Memoria Virtual (RAM)";
+    $alertType = "Memoria Virtual (RAM)";
     if($data->percent >= 70 && $data->percent < 80){
         $alertDescription = "Uso de memória elevado. O computador pode começar a perder alguma fluidez.";
         create_alert($agentId,6, $alertType, $alertDescription);
     }elseif($data->percent >= 80 && $data->percent <90){
-        $alertDescription = "A memória RAM está quase cheia ({$data->percent} %). Feche as abas do navegador ou programas que não está a usar.";
+        $alertDescription = "A memória RAM está quase cheia. Feche as abas do navegador ou programas que não está a usar.";
         create_alert($agentId,8, $alertType, $alertDescription);        
     }elseif($data->percent > 90){
-        $alertDescription = "Memória RAM esgotada ({$data->percent} %). O sistema está instável. Guarde o seu trabalho e reinicie os programas pesados imediatamente!";
+        $alertDescription = "Memória RAM esgotada. O sistema está instável. Guarde o seu trabalho e reinicie os programas pesados imediatamente!";
         create_alert($agentId,10, $alertType, $alertDescription);
     }
 }
@@ -126,15 +126,15 @@ function storeDataInTable_virtual_memory($agentId, $foreignKey, $data){
 function storeDataInTable_swap_memory_stats($agentId, $foreignKey, $data){
     $connection = $GLOBALS['conn'];
     $insertSwapMemoryStats = $connection->query("INSERT INTO swap_memory_stats(systemLevelMetrics_id,total,used,percent)VALUES($foreignKey,$data->total, $data->used, $data->percent)");
-    $alertType = "Uso de Memoria Secundária (SWAP)";
+    $alertType = "Memoria Secundária (SWAP)";
     if($data->percent >= 70 && $data->percent < 80){
         $alertDescription = "A memória secundária (SWAP) está sob carga elevada. O sistema poderá apresentar lentidão ao alternar entre janelas.";
         create_alert($agentId, 6, $alertType, $alertDescription);
-    }elseif($data->percent >= 80 && $data->percent <90){
-        $alertDescription = "A memória de reserva (SWAP) está quase cheia ({$data->percent} %). Feche programas pesados para evitar que o sistema bloqueie.";
+    }elseif($data->percent >= 80 && $data->percent < 90){
+        $alertDescription = "A memória de reserva (SWAP) está quase cheia. Feche programas pesados para evitar que o sistema bloqueie.";
         create_alert($agentId, 8, $alertType, $alertDescription);        
     }elseif($data->percent > 90){
-        $alertDescription = "Memória SWAP esgotada ({$data->percent} %). O sistema ficou sem memória e os programas vão começar a fechar sozinhos. Guarde tudo imediatamente!";
+        $alertDescription = "Memória SWAP esgotada. O sistema ficou sem memória e os programas vão começar a fechar sozinhos. Guarde tudo imediatamente!";
         create_alert($agentId, 10, $alertType, $alertDescription);
     }
 }
@@ -155,4 +155,33 @@ function create_alert($agentId, $level, $type, $description){
     $connection = $GLOBALS['conn'];
     $status = True;
     $insertAlert = $connection->query("INSERT INTO alerts(agent_id,level,type,descripton,status)VALUES($agentId,'$level','$type','$description', $status)");
+    if($insertAlert){
+        $options = array(
+            'cluster' => 'eu',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'e3568febf618e252044b',
+            'f12456bf6c98b473c47c',
+            '2155687',
+            $options
+        );
+
+        $getNumberOfAlerts = $connection->query("SELECT COUNT(*) FROM alerts");
+        $numberOfAlerts = $getNumberOfAlerts->fetch_row();
+
+        $getNumberOfCriticAlerts = $connection->query("SELECT COUNT(*) FROM alerts WHERE level > 8");
+        $numberOfCriticAlerts = $getNumberOfCriticAlerts->fetch_row();
+
+        $getRecentAlerts = $connection->query("SELECT agent_id,level,type,descripton,status FROM alerts ORDER BY id DESC LIMIT 6");
+        $recentAlerts = $getRecentAlerts->fetch_all();
+
+        $value = [
+            "recentAlerts" => $recentAlerts ?? false,
+            "numberAlerts" => $numberOfAlerts[0] ?? "0",
+            "numberCriticAlerts" => $numberOfCriticAlerts[0] ?? "0"
+        ];
+
+        $pusher->trigger('channel-alert', 'event-alert', $value);
+    }
 }

@@ -196,7 +196,7 @@
 .network-devices{
     display: flex;
     width: 100%;
-    height: auto;
+    height: 100%;
     padding: 10px;
     gap: 30px;
 }
@@ -214,6 +214,11 @@
             height: 35%;
             display: flex;
             flex-direction: column;
+            transition: all 1s;
+        }
+
+        .top-area:hover , .bottom-area:hover{
+            background-color: rgba(0, 0, 0, 0.089);
         }
 
             .top-area > div:nth-child(1){
@@ -324,6 +329,7 @@
             height: 65%;
             display: flex;
             flex-direction: column;
+            transition: all 1s;
         }
 
             .bottom-area > div:nth-child(1){
@@ -349,10 +355,10 @@
 
 
     .devices{
-        height: 100%;
+        height: 400px;
         width: 50%;
         display: flex;
-        flex-direction: column;
+        flex-direction: column; 
     }
 
         .devices .title{
@@ -395,7 +401,7 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 5px;
+            gap: 10px;
             padding: 15px;
         }
 
@@ -585,8 +591,98 @@
         border-top: solid 1px rgb(226, 226, 226);     
     }
 
-/*================================================ DEVICES ==================================================*/
 
+.apexcharts-toolbar {
+    z-index: 1 !important;
+}
 
+.apexcharts-menu {
+    z-index: 1 !important;
+}
 
-/*================================================ DEFAULT GATEWAY ==================================================*/
+/*-------------------------- Floating Pages ---------------------------------*/
+
+.networkDevicesFloatingPage{
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.655);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.networkDevicesArea{
+    height: 70%;
+    width: 70%;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+    .networkDevicesArea .label{
+        height: 8%;
+        width: 100%;
+        border-bottom: 1px solid rgb(220, 220, 220);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 20px;
+        color: gray;
+        font-size: 1.3em;
+    }
+
+        .networkDevicesArea .label button{
+            padding: 5px 20px;
+            background-color: rgb(225, 225, 225);
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+        }
+
+    .networkDevicesArea .filter{
+        height: 8%;
+        width: 100%;
+        display: flex;
+    }
+
+        .networkDevicesArea .filter > div{
+            height: 100%;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(92, 92, 92);
+            font-size: 1.1em;
+            background-color: rgb(242, 242, 242);
+            transition: all 1s;
+        }
+
+        .networkDevicesArea .filter > div:hover{
+            background-color: rgb(189, 189, 189);;
+        }
+
+        .networkDevicesArea .filter > div:nth-child(1){
+            border-right: 1px solid rgb(209, 209, 209);
+        }
+
+    .networkDevicesArea .content{
+        height: 92%;
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .networkDevicesArea .content > div{
+            height: 200px;
+            width: 200px;
+            border-radius: 10px;
+            background-color: rgb(230, 230, 230);
+            border: 1px solid rgb(193, 193, 193);
+        }

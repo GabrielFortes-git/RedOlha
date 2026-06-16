@@ -125,18 +125,234 @@
 <!------------------------------------------------ MAIN ------------------------------------------------>
     <div class="main">
         <div class="main-area">
-            <div>
-                <form>
-                    <input id="code" type="text" name="code" placeholder="code">
-                    <input type="submit" name="submit" id="submit">
-                </form>
+
+            <div class="page-description">
+                <span class="page-description-tittle">Gestão de Manutenção</span>
+                <span class="page-description-text">Gerencie dispositivos, registre atividades realizadas e manutenções, mantendo o inventário da rede atualizado.</span>
             </div>
+ 
+            <!-- Pesquisa e filtragem de quipamentos e manutenções -->
+           <div class="opcoes-escolha">
+                <div class="registro-manutencao white-card">
+                    <div class="icon">
+                        <div><img src="../../../Resources/icons/computer-blue.svg"></div>
+                    </div>
+                    <div class="text">
+                        <span class="tittle" style="color:rgb(18, 18, 122);">Registrar Dispositivo</span>
+                        <span class="description">Adicione novos dispositivos a rede e mantenha o inventário atualizado.</span>
+                    </div>
+                    <div class="link">
+                        <div id="registerDeviceLink">
+                            <div ><span>Registrar</span></div>
+                            <div><img src="../../../Resources/icons/arrow-right-stroke-black.svg"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="registro-equipamentos white-card">
+                    <div class="icon">
+                        <div><img src="../../../Resources/icons/spanner-green.svg"></div>
+                    </div>
+                    <div class="text">
+                        <span class="tittle" style="color:rgb(42, 128, 20);">Registrar Manutenção</span>
+                        <span class="description">Registre manutenções realizadas nos dispositivos de rede.</span>
+                    </div>
+                    <div class="link">
+                        <div id="registerManutentionLink">
+                            <div><span>Registrar</span></div>
+                            <div><img src="../../../Resources/icons/arrow-right-stroke-black.svg"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="historico-manutencao white-card">
+                    <div class="icon">
+                        <div><img src="../../../Resources/icons/history.svg"></div>
+                    </div>
+                    <div class="text">
+                        <span class="tittle" style="color:rgb(81, 19, 135);">Inventário</span>
+                        <span class="description">Consulte o inventário completo de dispositivos e manutenções realizadas.</span>
+                    </div>
+                    <div class="link">
+                        <div>
+                            <div><span>Acessar</span></div>
+                            <div><img src="../../../Resources/icons/arrow-right-stroke-black.svg"></div>
+                        </div>
+                    </div>
+                </div>
+           </div>
         </div>
     </div>
 <!------------------------------------------------ FOOTER ------------------------------------------------>
     <div class="footer">
 
     </div>
+
+
+    <!---------------------- Light/Model boxes---------------------->
+
+    <div id="registerDeviceArea" class="register-device-area register-area">
+        <div class="register-device-form register-form">
+          <div class="tittle">
+            <div><span>Registrar Dispositivo</span></div>
+            <div><button id="registerDeviceExitBtn">Exit</button></div>
+          </div>
+          <div class="form-area">
+            <form>
+                <div>
+                    <div>
+                        <label for="deviceName">Nome do Dispositivo</label>
+                        <input type="text" id="deviceName" name="deviceName">
+                    </div>
+                    <div>
+                        <label for="deviceModel">Modelo</label>
+                        <input type="text" id="deviceModel" name="deviceModel">
+                    </div>
+                </div>
+                <div>
+                     <div>
+                        <label for="deviceCategory">Categoria</label>
+                        <select id="deviceCategory" name="deviceCategory">
+                            <option value="router">Router</option>
+                            <option value="firewall">Firewall</option>
+                            <option value="switch">Switch</option>
+                            <option value="access-point">Access Point</option>
+                            <option value="server">Servidor</option>
+                            <option value="printer">Impressora</option>
+                            <option value="other">Outro</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="deviceManufacturer">Fabricante</label>
+                        <input id="deviceManufacturer" name="deviceManufacturer">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                      <label for="deviceState">Estado do Dispositivo</label>
+                        <select id="deviceState" name="deviceState">
+                            <option value="router">Ativo</option>
+                            <option value="firewall">Inativo</option>
+                            <option value="switch">Em Manutenção</option>
+                        </select>
+                    </div>
+                    <div>
+                        <lable for="deviceSerialNumber">Número de Série</lable>
+                        <input type="text" id="deviceSerialNumber">
+                    </div>
+                </div>
+                <div style="display:flex; align-items: center;">
+                    <div>
+                        <lable for="deviceIpAddress">Endereço IP :</lable>
+                        <input type="text" id="deviceIpAddress" name="deviceIpAddress">
+                    </div>
+                    <div>
+                        <lable for="deviceMacAddress">Endereço MAC :</lable>
+                        <input type="text" id="deviceMacAddress" name="deviceMacAddress">
+                    </div>
+                </div>
+                <div style="margin: 30px 0px; display: flex; justify-content: end; align-items: center;">
+                    <button type="button" id="registerDeviceResetBtn" style="background-color: rgb(90, 90, 90); color: white; padding: 10px 10px">Limpar</button>
+                    <button type="button" id="registerDeviceRegisterBtn" style="background-color: rgb(19, 19, 110); color: white; padding: 10px 25px;">Registrar</button>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div> 
+
+
+    <div id="registerManutentionArea" class="register-manutention-area register-area">
+        <div class="register-manutention-form register-form" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="tittle">
+                 <div><span>Criar Registro de Manutenção</span></div>
+            <div><button id="registerManutentionExitBtn">Exit</button></div>
+            </div>
+            <div class="form-area">
+                <form>
+                    <div>
+                        <div>
+                            <label for="manutentionCode">Código do Registro</label>
+                            <input id="manutentionCode" name="manutentionCode">
+                        </div>
+                        <div>
+                            <label for="manutentionDate">Data</label>
+                            <input type="datetime" id="manutentionDate" name="manutentionDate">
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="manutentionDevice">Dispositivo</label>
+                            <select id="manutentionDevice" name="manutentionDevice"></select>
+                            <datalist>
+                                
+                            </datalist>
+                        </div>
+                        <div>
+                            <lable for="manutentionDeviceIp">Endereço IP</lable>
+                            <input type="text" id="manutentionDeviceIp" name="manutentionDeviceIp">
+                        </div>
+                        <div>
+                            <lable for="manutentionDeviceMac">Endereço MAC</lable>
+                            <input type="text" id="manutentionDeviceMac" name="manutentionDeviceMac">
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="manutentionType">Tipo de Mantenção</label>
+                            <select id="manutentionType" name="manutentionType">
+                                    <option value="corretiva">Corretiva</option>
+                                    <option>Preventiva</option>
+                                    <option>Preditiva</option>
+                                    <option>Detectiva</option>
+                                    <option>Emergencial</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="manutentionLevel">Nível Criticidade</label>
+                            <select id="manutentionLevel" name="manutentionLevel">
+                                <option value="manutentionLevelbaixo">Baixo</option>
+                                <option value="manutentionLevelMedio">Médio</option>
+                                <option value="manutentionLevelAlto">Alto</option>
+                                <option value="manutentionLevelCritico">Crítico</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="manutentionResponsable">Autor da Manutenção</label>
+                            <select id="manutentionResponsable">
+                                <option>Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="manutentionDescription">Descrição da Manutenção</label>
+                            <textarea id="manutentionDescription" name="manutentionDescription" rows="5" cols="80" placeholder="Crie uma descrição para a manutenção ..."></textarea>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label for="manutentionStatus">Status</label>
+                            <select id="manutentionStatus">
+                                <option>Resolvido</option>
+                                <option>Resolvido Parcialmente</option>
+                                <option>Não Resolvido</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="manutentionNextManutention">Próxima Manutenção</label>
+                            <input type="date" id="manutentionNextManutention" name="manutentionNextManutention">
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: end; align-items: center; margin-top: 30px;">
+                        <button type="button" id="registerManutentionResetBtn" style="background-color: rgb(122, 122, 122); color: white; padding: 10px 10px">Limpar</button>
+                        <button type="button" id="registerManutentionRegisterBtn" style="background-color: rgb(19, 19, 110); color: white; padding: 10px 25px">Registrar</button> 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-------------------------------------------------------------->
+
+
 </div>
 
     <script src="./manutention_page.js"></script>

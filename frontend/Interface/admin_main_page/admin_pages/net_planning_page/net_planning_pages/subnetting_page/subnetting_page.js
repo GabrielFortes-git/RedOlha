@@ -2,14 +2,6 @@ const subnetsContainer = document.querySelector("#subnetsContainer")
 const limparBtn = document.querySelector("#limparBtn");
 const exportarBtn = document.querySelector("#exportarBtn");
  
-/*
- <tr>
-    <td>192.168.0.0</td>
-    <td>192.168.0.1 - 192.168.1.128</td>
-    <td>192.168.0.128</td>
-    <td>255.255.255.255</td>
-</tr>
-*/
 
  function calculateSubnetC(ip_address, CIDR, total_hosts, number_subnets, number_hosts_subnet) {
 
