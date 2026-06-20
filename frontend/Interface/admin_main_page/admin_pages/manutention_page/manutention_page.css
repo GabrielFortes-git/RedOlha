@@ -134,7 +134,7 @@
     background-color: rgba(0, 0, 0, 0.599);
 }
 
-.register-device-area, .register-manutention-area{
+.register-device-area, .register-manutention-area, .manutention-history{
     display: none;
 }
 
@@ -226,6 +226,26 @@
                 font-size: 1.1em;
             }
 
+             .registerDeviceResetBtn{
+                background-color: rgb(90, 90, 90);
+                padding: 10px 10px;
+                transition: all 0.5s;
+             }
+
+             .registerDeviceRegisterBtn{
+                background-color: rgb(19, 19, 110); 
+                padding: 10px 25px;
+                transition: all 0.5s;
+             }
+
+                    .registerDeviceResetBtn:hover{
+                    background-color: rgb(66, 66, 66);
+                }
+
+                .registerDeviceRegisterBtn:hover{
+                    background-color: rgb(36, 36, 154); 
+                }
+
             .register-form .form-area textarea{
                 border-radius: 5px;
                 padding: 10px;
@@ -234,5 +254,138 @@
             .register-form .form-area textarea::placeholder{
                 font-size: 1.2em;
             }
-        
-        /*--------------------------------- Register Manutention Form Body ----------------------------------------*/
+       
+
+.manutention-history{
+    justify-content: center;
+    align-items: center;
+}
+
+    .history-area{
+        height: 90%;
+        width: 80%;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+        .history-area .tittle{
+            height: 7%;
+            width: 100%;
+            border-bottom: 1px solid rgb(214, 214, 214);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 20px;
+            color: gray;
+            font-size: 1.4em;
+            font-weight: 500;
+        }
+
+            .history-area .tittle button{
+                border: none;
+                padding: 5px 15px;
+                background-color: rgb(201, 201, 201);
+                color: black;
+                border-radius: 5px;
+                font-size: 1em;
+                transition: all 0.5s;
+            }
+
+
+        .history-area .content{
+            height: 93%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .search-area{
+                height: 10%;
+                width: 100%;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                padding-left: 20px;
+            }
+
+                .search-area > div{
+                    height: 100%;
+                    width: 150px;
+                    display: flex;
+                    justify-content: start;
+                    align-items: center;
+                    border-bottom: 1px solid rgb(197, 197, 197);
+                }
+
+                    .search-area select , .search-area input{
+                        border-radius: 5px;
+                        padding: 6px 20px;
+                        font-size: 1.2em;
+                        background-color: rgb(255, 255, 255);
+                        border: 1px solid gray;
+                    }
+
+            .display-area{
+                height: 90%;
+                width: 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: 30%;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                padding: 30px;
+            }
+
+                .display-area > div{
+                    height: 180px;
+                    width: 380px;
+                    background-color: rgb(209, 209, 209);
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    padding: 20px;
+                    gap: 20px;
+                }
+
+                    .display-area > div .icon{
+                        height: 80%;
+                        width: 30% ;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 20px;
+                        background-color: rgb(139, 139, 139);
+                        border-radius: 10px;
+                    }
+
+                        .display-area > div .icon img{
+                            height: 70%;
+                        }
+
+                    .display-area > div .info{
+                        height: 100%;
+                        width: 70% ;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        gap:7px;
+                    }
+
+                        .display-area > div .info > div{
+                            width: 100%;
+                            height: 20%;
+                            display: flex;
+                            gap: 10px;
+                        }
+
+                            .display-area > div .info > div span:nth-child(1){
+                                color: gray;
+                            }
+
+                            .display-area > div .info > div span:nth-child(2){
+                                font-weight: 500;
+                            }

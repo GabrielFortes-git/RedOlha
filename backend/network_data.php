@@ -48,7 +48,7 @@ function storeDataInTable_speedTestData($data){
             "drops" => $drops ?? '1',
             "devices" => $numberOfDevices ?? "0"
         ];
-        $pusher->trigger('channel-speedTestData', 'event-SpeedTestData', $value);
+        $pusher->trigger('channel-mychannel', 'event-SpeedTestData', $value);
     }
 }
 

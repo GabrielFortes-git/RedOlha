@@ -93,5 +93,57 @@ function getMonitoringPageData(){
 }
 
 
+function getAgentMonitoringPageData(){
+    $connection = $GLOBALS['conn'];
 
+    $getAgentDetails = $connection->query("SELECT model,manufacturer,os,release_version,status FROM agents ORDER BY id DESC LIMIT 1 ");
+    $agentDetails = $getAgentDetails->fetch_row();
+
+    $getBattery = $connection->query("SELECT battery_percent From systemLevelMetrics ORDER BY id DESC LIMIT 1 ");
+    $battery = $getBattery->fetch_row();
+
+    $getDiskUsage = $connection->query("SELECT total,used,free FROM disk_usage ORDER BY id DESC LIMIT 1");
+    $diskUsage = $getDiskUsage->fetch_row();
+
+    $getCPU = $connection->query("SELECT cpu_usage FROM systemLevelMetrics ORDER BY id DESC LIMIT 7");
+    $cpu = $getCPU->fetch_all();
+
+    $getVirtualMemory = $connection->query("SELECT percent FROM virtual_memory ORDER BY id DESC LIMIT 7"); 
+    $virtualMemory = $getVirtualMemory->fetch_all();
+
+    $getSwap = $connection->query("SELECT percent FROM swap_memory_stats ORDER BY id DESC LIMIT 7");
+    $swap = $getSwap->fetch_all();
+
+    $getCPUFrequency = $connection->query("SELECT current,max,min FROM cpu_frequency ORDER BY id DESC LIMIT 1");
+    $cpuFrequency = $getCPUFrequency->fetch_row();
+
+    $getCPUTimes = $connection->query("SELECT user,nice,system_time,idle,iowait,irq FROM cpu_times ORDER BY id DESC LIMIT 1");
+    $cpuTimes = $getCPUTimes->fetch_row();
+
+    $getCPUStats = $connection->query("SELECT ctx_switches,interrupts,soft_interrupts,syscalls FROM cpu_stats ORDER BY id DESC LIMIT 1");
+    $cpuStats = $getCPUStats->fetch_row();
+
+    $getAvgSysLoad = $connection->query("SELECT one_min,five_min,fifteen_min FROM cpu_avg_system_load ORDER BY id DESC LIMIT 1");
+    $avgSysLoad = $getAvgSysLoad->fetch_row();
+
+    $getIOCounters = $connection->query("SELECT bytes_sent,bytes_recv,packets_sent,packets_recv,errin,errout,dropin,dropout FROM net_io_counters ORDER BY id DESC LIMIT 1");
+    $ioCounters = $getIOCounters->fetch_row();
+
+
+    $data = [
+        "agent_details" => $agentDetails,
+        "battery" => $battery[0],
+        "disk_usage" => $diskUsage,
+        "cpu" => $cpu,
+        "ram" => $virtualMemory,
+        "swap" => $swap,
+        "cpu_frequency" => $cpuFrequency,
+        "cpu_times" => $cpuTimes,
+        "cpu_stats" => $cpuStats,
+        "avg_sys_load" => $avgSysLoad,
+        "io_counters" => $ioCounters
+    ];
+
+    return $data;
+}
 

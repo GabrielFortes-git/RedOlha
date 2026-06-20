@@ -32,8 +32,27 @@ function storeDataInTable_systemLevelMetrics($agentId, $data){
 
     $insertMetrics = $connection->query("INSERT INTO systemLevelMetrics(agent_id,ip_address,cpu_usage,physical_core_count,logical_core_count, username, battery_percent, boot_time)VALUES($agentId,'$data->ipAddress',$data->cpuUsage,$data->physicalCoreCount, $data->logicalCoreCount, '$data->user', $data->batteryPercentage, $data->bootTime)");
     $systemMetrics_id = $connection->insert_id; 
-    if (!$insertMetrics) {
-        die("Erro INSERT metrics: " .$connection->error);
+     if($insertMetrics){
+        $options = array(
+            'cluster' => 'eu',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'e3568febf618e252044b',
+            'f12456bf6c98b473c47c',
+            '2155687',
+            $options
+        );
+
+        $cpu = $data->cpuUsage ;
+        $battery = $data->batteryPercentage ;
+
+        $value = [
+            "cpu" => $cpu,
+            "battery" => $battery
+        ];
+
+        $pusher->trigger('channel-mychannel', 'event-agent-cpu-battery', $value);
     }
     
     $alertType1 = "Uso de CPU";
@@ -72,27 +91,146 @@ function storeDataInTable_systemLevelMetrics($agentId, $data){
 function storeDataInTable_cpu_avg_system_load($foreignKey, $data){
     $connection = $GLOBALS['conn'];   
     $insertCpuAvgSystemLoad = $connection->query("INSERT INTO cpu_avg_system_load(systemLevelMetrics_id,one_min,five_min,fifteen_min)VALUES($foreignKey,$data->oneMin,$data->fiveMin,$data->fifteenMin)");
-}
+
+    if($insertCpuAvgSystemLoad){
+        $options = array(
+            'cluster' => 'eu',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'e3568febf618e252044b',
+            'f12456bf6c98b473c47c',
+            '2155687',
+            $options
+        );
+
+        $value = [
+            "one" => $data->oneMin ,
+            "five" => $data->fiveMin ,
+            "fifteen" => $data-> fifteenMin 
+        ];
+
+        $pusher->trigger('channel-mychannel', 'event-agent-avg-load', $value);
+    }
+
+
+    }
 
 function storeDataInTable_cpu_frequency($foreignKey, $data){
     $connection = $GLOBALS['conn'];
     $insertCpuFrequency = $connection->query("INSERT INTO cpu_frequency(systemLevelMetrics_id,current,min,max)VALUES($foreignKey,$data->current,$data->min,$data->max)");
-}
+
+     if($insertCpuFrequency){
+        $options = array(
+            'cluster' => 'eu',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'e3568febf618e252044b',
+            'f12456bf6c98b473c47c',
+            '2155687',
+            $options
+        );
+
+        $value = [
+            "current" => $data->current,
+            "max" => $data->max,
+        ];
+
+        $pusher->trigger('channel-mychannel', 'event-agent-cpu-frequency', $value);
+    }
+
+    }
 
 function storeDataInTable_cpu_stats($foreignKey, $data){
     $connection = $GLOBALS['conn'];
     $insertCpuStats = $connection->query("INSERT INTO cpu_stats(systemLevelMetrics_id,ctx_switches,interrupts,soft_interrupts,syscalls)VALUES($foreignKey,$data->ctx_switches,$data->interrupts,$data->soft_interrupts,$data->syscalls)");
-}
+
+
+      if($insertCpuStats){
+        $options = array(
+            'cluster' => 'eu',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'e3568febf618e252044b',
+            'f12456bf6c98b473c47c',
+            '2155687',
+            $options
+        );
+
+        $value = [
+            "switches" => $data->ctx_switches,
+            "interrupts" => $data->interrupts,
+            "soft_interrupts" => $data->soft_interrupts,
+            "syscalls" => $data->syscalls
+        ];
+
+        $pusher->trigger('channel-mychannel', 'event-agent-cpu-stats', $value);
+    }
+
+
+    }
 
 function storeDataInTable_cpu_times($foreignKey, $data){
     $connection = $GLOBALS['conn'];
     $insertCpuTimes = $connection->query("INSERT INTO cpu_times(systemLevelMetrics_id,user,nice,system_time,idle,iowait,irq)VALUES($foreignKey,$data->user,$data->nice,$data->system,$data->idle,$data->iowait,$data->irq)");    
+
+        if($insertCpuTimes){
+        $options = array(
+            'cluster' => 'eu',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'e3568febf618e252044b',
+            'f12456bf6c98b473c47c',
+            '2155687',
+            $options
+        );
+
+        $value = [
+            "user" => $data->user,
+            "nice" => $data->nice,
+            "system_time" => $data->system,
+            "idle" => $data->idle,
+            "iowait" => $data->iowait,
+            "irq" => $data->irq
+        ];
+
+        $pusher->trigger('channel-mychannel', 'event-agent-cpu-times', $value);
+    }
+
 }
 
 function storeDataInTable_disk_usage($agentId,$foreignKey, $data){
     $connection = $GLOBALS['conn'];
     $insertDiskUsage = $connection->query("INSERT INTO disk_usage(systemLevelMetrics_id,total,used,free,percent)VALUES($foreignKey,$data->total, $data->used, $data->free, $data->percent)");
     $diskUsagePercentage = ($data->used / $data->total)*100;  
+
+      if($insertDiskUsage){
+        $options = array(
+            'cluster' => 'eu',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'e3568febf618e252044b',
+            'f12456bf6c98b473c47c',
+            '2155687',
+            $options
+        );
+
+        $used = $data->used ;
+        $free = $data->free ;
+
+        $value = [
+            "used" => $data->used,
+            "free" => $data->free
+        ];
+
+        $pusher->trigger('channel-mychannel', 'event-agent-disk-usage', $value);
+    }
+
+
     $alertType = "Uso de Disco";
     if($diskUsagePercentage >= 70 && $diskUsagePercentage < 80){
         $alertDescription = "Espaço em disco a esgotar. Recomendamos uma limpeza preventiva de ficheiros temporários.";
@@ -106,10 +244,31 @@ function storeDataInTable_disk_usage($agentId,$foreignKey, $data){
     }
 
     }
+    
 
 function storeDataInTable_virtual_memory($agentId, $foreignKey, $data){
     $connection = $GLOBALS['conn'];
     $insertVirtualMemory = $connection->query("INSERT INTO virtual_memory(systemLevelMetrics_id,total,available,percent,used,free,active,inactive,buffers,cached,shared,slab)VALUES($foreignKey,$data->total , $data->available , $data->percent , $data->used , $data->free , $data->active , $data->inactive , $data->buffers , $data->cached , $data->shared , $data->slab)");
+    
+    if($insertVirtualMemory){
+        $options = array(
+            'cluster' => 'eu',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'e3568febf618e252044b',
+            'f12456bf6c98b473c47c',
+            '2155687',
+            $options
+        );
+
+        $value = [
+            "percent" => $data->percent,
+        ];
+
+        $pusher->trigger('channel-mychannel', 'event-agent-virtual-memory', $value);
+    }
+    
     $alertType = "Memoria Virtual (RAM)";
     if($data->percent >= 70 && $data->percent < 80){
         $alertDescription = "Uso de memória elevado. O computador pode começar a perder alguma fluidez.";
@@ -142,7 +301,34 @@ function storeDataInTable_swap_memory_stats($agentId, $foreignKey, $data){
 function storeDataInTable_net_io_counters($foreignKey, $data){
     $connection = $GLOBALS['conn'];
     $insertNetIOCounters = $connection->query("INSERT INTO net_io_counters(systemLevelMetrics_id,bytes_sent,bytes_recv,packets_sent,packets_recv,errin,errout,dropin,dropout)VALUES($foreignKey,$data->bytes_sent, $data->bytes_recv, $data->packets_sent, $data->packets_recv, $data->errin, $data->errout, $data->dropin, $data->dropout)");
-}
+
+      if($insertNetIOCounters){
+        $options = array(
+            'cluster' => 'eu',
+            'useTLS' => true
+        );
+        $pusher = new Pusher\Pusher(
+            'e3568febf618e252044b',
+            'f12456bf6c98b473c47c',
+            '2155687',
+            $options
+        );
+
+        $value = [
+           "bytes_sent" => $data->bytes_sent,
+           "bytes_recv" => $data->bytes_recv,
+           "packets_sent" => $data->packets_sent,
+           "packets_recv" => $data->packets_recv,
+           "errin" => $data->errin,
+           "errout" => $data->errout,
+           "dropin" => $data->dropin,
+           "dropout" => $data->dropout
+        ];
+
+        $pusher->trigger('channel-mychannel', 'event-agent-io-counters', $value);
+    }
+
+    }
 
 
 function create_event($type, $description){

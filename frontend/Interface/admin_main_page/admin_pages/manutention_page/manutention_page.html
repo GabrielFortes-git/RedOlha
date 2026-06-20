@@ -51,8 +51,7 @@
     <div class="aside">
         <div class="logo">
           <div>
-            <img src="../../../Resources/Images/Red0lha.svg">
-            <span>RedOlha</span>
+            <img src="../../../Resources/Images/RoH(1).png">
           </div>
         </div>
         <div class="menu-options1">
@@ -172,7 +171,7 @@
                         <span class="description">Consulte o inventário completo de dispositivos e manutenções realizadas.</span>
                     </div>
                     <div class="link">
-                        <div>
+                        <div id="manutentionHistoryLink">
                             <div><span>Acessar</span></div>
                             <div><img src="../../../Resources/icons/arrow-right-stroke-black.svg"></div>
                         </div>
@@ -229,9 +228,9 @@
                     <div>
                       <label for="deviceState">Estado do Dispositivo</label>
                         <select id="deviceState" name="deviceState">
-                            <option value="router">Ativo</option>
-                            <option value="firewall">Inativo</option>
-                            <option value="switch">Em Manutenção</option>
+                            <option value="ativo">Ativo</option>
+                            <option value="inativo">Inativo</option>
+                            <option value="manutenção">Em Manutenção</option>
                         </select>
                     </div>
                     <div>
@@ -250,8 +249,8 @@
                     </div>
                 </div>
                 <div style="margin: 30px 0px; display: flex; justify-content: end; align-items: center;">
-                    <button type="button" id="registerDeviceResetBtn" style="background-color: rgb(90, 90, 90); color: white; padding: 10px 10px">Limpar</button>
-                    <button type="button" id="registerDeviceRegisterBtn" style="background-color: rgb(19, 19, 110); color: white; padding: 10px 25px;">Registrar</button>
+                    <button class="registerDeviceResetBtn" type="button" id="registerDeviceResetBtn">Limpar</button>
+                    <button class="registerDeviceRegisterBtn" type="button" id="registerDeviceRegisterBtn">Registrar</button>
                 </div>
             </form>
           </div>
@@ -274,16 +273,13 @@
                         </div>
                         <div>
                             <label for="manutentionDate">Data</label>
-                            <input type="datetime" id="manutentionDate" name="manutentionDate">
+                            <input type="date" id="manutentionDate" name="manutentionDate">
                         </div>
                     </div>
                     <div>
                         <div>
                             <label for="manutentionDevice">Dispositivo</label>
                             <select id="manutentionDevice" name="manutentionDevice"></select>
-                            <datalist>
-                                
-                            </datalist>
                         </div>
                         <div>
                             <lable for="manutentionDeviceIp">Endereço IP</lable>
@@ -299,25 +295,25 @@
                             <label for="manutentionType">Tipo de Mantenção</label>
                             <select id="manutentionType" name="manutentionType">
                                     <option value="corretiva">Corretiva</option>
-                                    <option>Preventiva</option>
-                                    <option>Preditiva</option>
-                                    <option>Detectiva</option>
-                                    <option>Emergencial</option>
+                                    <option value="preventiva">Preventiva</option>
+                                    <option value="pedritiva">Preditiva</option>
+                                    <option value="detectiva">Detectiva</option>
+                                    <option value="emargencial">Emergencial</option>
                             </select>
                         </div>
                         <div>
                             <label for="manutentionLevel">Nível Criticidade</label>
                             <select id="manutentionLevel" name="manutentionLevel">
-                                <option value="manutentionLevelbaixo">Baixo</option>
-                                <option value="manutentionLevelMedio">Médio</option>
-                                <option value="manutentionLevelAlto">Alto</option>
-                                <option value="manutentionLevelCritico">Crítico</option>
+                                <option value="baixo">Baixo</option>
+                                <option value="medio">Médio</option>
+                                <option value="alto">Alto</option>
+                                <option value="critico">Crítico</option>
                             </select>
                         </div>
                         <div>
                             <label for="manutentionResponsable">Autor da Manutenção</label>
-                            <select id="manutentionResponsable">
-                                <option>Admin</option>
+                            <select id="manutentionResponsable" name="manutentionResponsable">
+                                <option value="admin">Admin</option>
                             </select>
                         </div>
                     </div>
@@ -342,7 +338,7 @@
                         </div>
                     </div>
                     <div style="display: flex; justify-content: end; align-items: center; margin-top: 30px;">
-                        <button type="button" id="registerManutentionResetBtn" style="background-color: rgb(122, 122, 122); color: white; padding: 10px 10px">Limpar</button>
+                        <button  type="button" id="registerManutentionResetBtn" style="background-color: rgb(122, 122, 122); color: white; padding: 10px 10px">Limpar</button>
                         <button type="button" id="registerManutentionRegisterBtn" style="background-color: rgb(19, 19, 110); color: white; padding: 10px 25px">Registrar</button> 
                     </div>
                 </form>
@@ -350,12 +346,49 @@
         </div>
     </div>
 
+    <div id="manutentionHistoryArea" class="manutention-history register-area">
+        <div class="history-area">
+            <div class="tittle"><span>Inventário</span> <button id="manutentionHistoryExitBtn">Exit</button></div>
+            <div class="content">
+                <div class="search-area">
+                    <div>
+                        <select>
+                            <option value="todos">Todos</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="date">
+                    </div>
+                </div>
+                <div class="display-area">
+                    <div>
+                        <div class="icon"><img src="../../../Resources/Images/document.png"></div>
+                        <div class="info">
+                            <div><span>Dispositivo:</span> <span>Router-TI-01</span></div>
+                            <div><span>Manutenção:</span> <span>Corretiva</span></div>
+                            <div><span>Estado:</span> <span>Resolvido</span></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="icon"><img src="../../../Resources/Images/document.png"></div>
+                        <div class="info">
+                            <div><span>Dispositivo:</span> <span>Servidor-BD-Central </span></div>
+                            <div><span>Manutenção:</span> <span>Preventiva</span></div>
+                            <div><span>Estado:</span> <span>Resolvido</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <!-------------------------------------------------------------->
 
 
 </div>
 
-    <script src="./manutention_page.js"></script>
+    <script src="./manutention_page.js" defer></script>
     <script src="../../common/common-script.js"></script>
 </body>
 </html>

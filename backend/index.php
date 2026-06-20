@@ -73,6 +73,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                             $pageData = getMonitoringPageData();
                             echo json_encode($pageData);
                             break;
+                        case "agent_monitoring_page":
+                            $pageData = getAgentMonitoringPageData();
+                            echo json_encode($pageData);
+                            break;
                         default:
                             echo json_encode([
                             "status" => "error",
@@ -88,10 +92,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     ]);
                     break;
                 case "manutentionRegisterDevice":
-                    $manageManutentionDevice = manageManutentionDeviceData($dataRecived);
+                    $manageManutention = manageManutentionDeviceData($dataRecived);
                     echo json_encode([
                         "status" => "Data Received!",
-                        "message" => $manageManutentionDevice
+                        "message" => $manageManutention
+                    ]);
+                    break;
+                case "manutentionRegisterManutention":
+                    $manageManutention = manageManutentionManutentionData($dataRecived);
+                    echo json_encode([
+                        "status" => "Data Received!",
+                        "message" => $manageManutention
                     ]);
                     break;
                 default:

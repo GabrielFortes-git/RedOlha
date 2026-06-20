@@ -201,7 +201,8 @@ var pusher = new Pusher('e3568febf618e252044b', {
   cluster: 'eu'
 });
 
-var channel = pusher.subscribe('channel-speedTestData');
+var channel = pusher.subscribe('channel-mychannel');
+
 channel.bind('event-SpeedTestData', function(data) {
   download.textContent = data["download"];
   upload.textContent = data["upload"];
@@ -210,7 +211,6 @@ channel.bind('event-SpeedTestData', function(data) {
   numberOfDevices.textContent = data["devices"];
 });
 
-var channel = pusher.subscribe('channel-alert');
 channel.bind('event-alert', function(data) {
 
     if(data["recentAlerts"] != false){ 
